@@ -1,9 +1,21 @@
 import { GetStaticProps } from 'next'
 import Button from '@/components/Button'
 import { api } from '@/lib/axios'
-import { ArrowSquareOut } from '@phosphor-icons/react'
+import {
+  Rocket,
+  ArrowSquareOut,
+  MedalMilitary,
+  GraduationCap,
+} from '@phosphor-icons/react'
 
-import { HomeContainer, Intro } from '@/styles/pages/home'
+import {
+  AboutMe,
+  Card,
+  HomeContainer,
+  IconWrraper,
+  Intro,
+} from '@/styles/pages/home'
+
 import Link from 'next/link'
 
 interface GithubProfile {
@@ -31,6 +43,47 @@ export default function Home({ user }: HomeProps) {
           </Button>
         </Link>
       </Intro>
+
+      <AboutMe>
+        <Card>
+          <IconWrraper>
+            <GraduationCap weight="bold" size={24} />
+          </IconWrraper>
+
+          <h2>Início</h2>
+
+          <p>
+            Em 2021, inicie a Licenciatura em COmputação na UFERSA. Cursei
+            diversas disciplinas na area da programação, incluindo POO e Java.
+          </p>
+        </Card>
+
+        <Card>
+          <IconWrraper>
+            <MedalMilitary weight="bold" size={24} />
+          </IconWrraper>
+
+          <h2>Progresso</h2>
+
+          <p>
+            No ano seguinte, participei do programa Oracle Next Education (ONE),
+            parceria Oracle e Alura.
+          </p>
+        </Card>
+
+        <Card>
+          <IconWrraper>
+            <Rocket weight="bold" size={24} />
+          </IconWrraper>
+
+          <h2>Rocketseat</h2>
+
+          <p>
+            Iniciei no Back-end, mas me apaixonei pela programação Front-end
+            depois de consumir muito conteúdo da Rocket.
+          </p>
+        </Card>
+      </AboutMe>
     </HomeContainer>
   )
 }
@@ -44,6 +97,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       user,
     },
-    revalidate: 60 * 60 * 1, // 1 hour
+    revalidate: 60 * 60 * 24, // 1 hour
   }
 }

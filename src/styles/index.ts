@@ -15,6 +15,8 @@ export const {
       white: '#FFF',
 
       background: '#0F172A',
+      cardBackground: 'rgba(15, 23, 42, 0.5)',
+
       colorTitle: '#E2E8F0',
       text: '#94A3B8',
       textSecondary: '#9E8CFC',
@@ -24,12 +26,13 @@ export const {
     },
     fontSizes: {
       sm: '0.875rem',
-      base: '1rem',
+      md: '1rem',
       lg: '1.25rem',
       '4xl': '3rem',
     },
     radii: {
-      radius: '6px',
+      sm: '6px',
     },
+    fontWeights: { regular: '400', medium: '500', bold: '700' },
   },
 })

@@ -6,7 +6,7 @@ export const ButtonContainer = styled('button', {
   alignItems: 'center',
   gap: '0.5rem',
 
-  borderRadius: '$radius',
+  borderRadius: '$sm',
   backgroundColor: '$violet',
   color: '$white',
   fontSize: '0.875rem',
@@ -18,8 +18,8 @@ export const ButtonContainer = styled('button', {
   border: 'none',
 
   '&:hover': {
-    boxShadow: '-1px 0px 30px 0px rgba(97, 71, 255, 0.80)',
-    transition: 'all .10s',
+    filter: 'brightness(1.2)',
+    transition: 'all .20s ease',
   },
 
   svg: {
@@ -36,16 +36,24 @@ export const ButtonContainer = styled('button', {
         svg: {
           color: '$textSecondary',
         },
+      },
+      transparent: {
+        backgroundColor: 'transparent',
+        color: '$white',
+
+        svg: {
+          color: '$white',
+        },
 
         '&:hover': {
-          boxShadow: 'none',
+          backgroundColor: '$background',
         },
       },
     },
-    border: {
-      withBorder: {
-        border: '1px solid $textSecondary',
-      },
+    outlined: {
+      violet: { border: '2px solid $violet' },
+      secondary: { border: '2px solid $textSecondary' },
+      white: { border: '2px solid $white' },
     },
   },
 })
