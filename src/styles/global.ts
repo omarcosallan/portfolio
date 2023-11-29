@@ -9,9 +9,9 @@ export const globalStyles = globalCss({
 
   body: {
     backgroundColor: '$background',
-    color: '$textColor',
+    color: '$colorTitle',
     '-webkit-font-smoothing': 'antialiased',
-    minHeight: '2000vh',
+    minHeight: '100vh',
     position: 'relative',
 
     '&::before': {
@@ -19,8 +19,8 @@ export const globalStyles = globalCss({
       position: 'absolute',
       width: '100%',
       height: '100vh',
-      background:
-        'radial-gradient(600px at top 1px, rgba(29, 78, 216, 0.15) 0%, transparent 80%)',
+      backgroundImage:
+        'radial-gradient(circle at 15% 50%, rgb(44 34 80), rgba(255, 255, 255, 0) 15%), radial-gradient(circle at 85% 30%, rgb(44 34 80), rgba(255, 255, 255, 0) 15%);',
       pointerEvents: 'none',
     },
   },
@@ -28,5 +28,9 @@ export const globalStyles = globalCss({
   'body, input, textarea, button': {
     fontFamily: 'Inter',
     fontWeight: 400,
+  },
+
+  'h1, h2, h3': {
+    letterSppacing: '-0.025em',
   },
 })
