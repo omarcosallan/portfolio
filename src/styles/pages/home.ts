@@ -8,12 +8,12 @@ export const Intro = styled('div', {
   alignItems: 'center',
   justifyContent: 'center',
   textAlign: 'center',
-  marginBottom: '3rem',
+  marginBottom: '$16',
   height: '45vh',
 
   h1: {
     fontSize: '$4xl',
-    marginBottom: '0.875rem',
+    marginBottom: '$6',
   },
 
   p: {
@@ -24,7 +24,7 @@ export const Intro = styled('div', {
 
   a: {
     textDecoration: 'none',
-    marginTop: '45px',
+    marginTop: '$16',
   },
 })
 
@@ -32,11 +32,57 @@ export const IntroducingMyself = styled('ul', {
   display: 'grid',
   gridTemplateColumns: 'repeat(3, 1fr)',
   alignItems: 'flex-start',
-  gap: '2rem',
+  gap: '$12',
 
   h2: {
     fontSize: '$lg',
   },
 
   p: { fontSize: '$sm' },
+})
+
+export const TitleSection = styled('h2', {
+  fontSize: '$2xl',
+  marginBottom: '$16',
+})
+
+export const SectionContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  marginTop: '$16',
+})
+
+export const GitHubSummary = styled(SectionContainer, {
+  '>div': {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, .8fr)',
+    gap: '$16',
+
+    width: 'calc(100% - $16)',
+    boxShadow: '0 0 0 1px $violet',
+  },
+})
+
+export const SummaryCard = styled('div', {
+  span: {
+    display: 'block',
+    fontSize: '$sm',
+    color: '$text',
+    marginBottom: '$3',
+  },
+
+  strong: {
+    fontSize: '$4xl',
+    color: '$white',
+  },
+})
+
+export const Experiences = styled(SectionContainer, {
+  'p + p': {
+    marginTop: '$6',
+  },
+
+  backgroundImage:
+    'radial-gradient(300px 50% 50%, rgba(29, 78, 216, 0.15) 0%, transparent 80%)',
 })

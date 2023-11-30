@@ -1,10 +1,11 @@
 import { ReactNode } from 'react'
 import { CardContainer } from './styles'
+import { ComponentProps } from '@stitches/react'
 
-interface CardProps {
+type CardProps = ComponentProps<typeof CardContainer> & {
   children: ReactNode
 }
 
-export default function Card({ children }: CardProps) {
-  return <CardContainer>{children}</CardContainer>
+export default function Card({ children, ...props }: CardProps) {
+  return <CardContainer {...props}>{children}</CardContainer>
 }

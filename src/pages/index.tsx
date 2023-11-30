@@ -8,7 +8,15 @@ import {
   GraduationCap,
 } from '@phosphor-icons/react'
 
-import { HomeContainer, Intro, IntroducingMyself } from '@/styles/pages/home'
+import {
+  Experiences,
+  GitHubSummary,
+  HomeContainer,
+  Intro,
+  IntroducingMyself,
+  SummaryCard,
+  TitleSection,
+} from '@/styles/pages/home'
 
 import Link from 'next/link'
 import IconWrapper from '@/components/IconWrapper'
@@ -18,7 +26,9 @@ interface GithubProfile {
   name: string
   bio: string
   followers: number
-  html_url: string
+  htmlUrl: string
+  publicRepos: number
+  createdAt: string
 }
 
 interface HomeProps {
@@ -32,7 +42,7 @@ export default function Home({ user }: HomeProps) {
         <h1>Marcos Dev</h1>
         <p>{user.bio}</p>
 
-        <Link href={user.html_url} target="_blank">
+        <Link href={user.htmlUrl} target="_blank">
           <Button>
             GitHub
             <ArrowSquareOut weight="bold" />
@@ -87,14 +97,78 @@ export default function Home({ user }: HomeProps) {
           </p>
         </Card>
       </IntroducingMyself>
+
+      <GitHubSummary>
+        <TitleSection>Resumo do GitHub</TitleSection>
+
+        <div>
+          <SummaryCard>
+            <span>Seguidores</span>
+            <strong>{user.followers}</strong>
+          </SummaryCard>
+
+          <SummaryCard>
+            <span>Repositórios públicos</span>
+            <strong>{user.publicRepos}</strong>
+          </SummaryCard>
+
+          <SummaryCard>
+            <span>Usuário desde</span>
+            <strong>{user.createdAt}</strong>
+          </SummaryCard>
+        </div>
+      </GitHubSummary>
+
+      <Experiences>
+        <TitleSection>Experiências</TitleSection>
+
+        <Card filled>
+          <p>
+            Em 2021, dei início à minha jornada acadêmica ao ingressar na
+            Licenciatura em Computação. Foi nesse período que tive meu primeiro
+            contato significativo com o vasto mundo da programação. Ao longo
+            desse caminho acadêmico, explorei diversas disciplinas,
+            destacando-me especialmente em tópicos como Programação Orientada a
+            Objetos (POO) e Java.
+          </p>
+
+          <p>
+            Meu interesse crescente pelo potencial criativo da programação me
+            levou a participar ativamente do programa Oracle Next Education
+            (ONE) no ano seguinte. Essa experiência, resultado da parceria entre
+            a Oracle e a Alura, proporcionou uma visão prática e aplicada dos
+            conhecimentos teóricos adquiridos em sala de aula, ampliando ainda
+            mais minha perspectiva no universo da computação.
+          </p>
+
+          <p>
+            Atualmente, meu foco principal está em me desenvolver como um
+            dedicado desenvolvedor front-end. Ao explorar tecnologias amplamente
+            reconhecidas globalmente, como React e Next, busco não apenas
+            aprimorar minhas habilidades técnicas, mas também contribuir para
+            projetos inovadores e impactantes.
+          </p>
+        </Card>
+      </Experiences>
     </HomeContainer>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await api.get('users/omarcosallan')
+  const data = await response.data
 
-  const user = await response.data
+  const user = {
+    name: data.name,
+    bio: data.bio,
+    followers: data.followers,
+    htmlUrl: data.html_url,
+    publicRepos: data.public_repos,
+    createdAt: new Intl.DateTimeFormat('pt-BR', {
+      month: 'long',
+      year: 'numeric',
+    }).format(new Date(data.created_at)),
+  }
 
   return {
     props: {
