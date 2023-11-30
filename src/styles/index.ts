@@ -22,7 +22,7 @@ export const {
       textSecondary: '#9E8CFC',
 
       violet: '#6147FF',
-      violetSecondary: '#2C2250',
+      violetSecondary: '#2c2250',
     },
     fontSizes: {
       sm: '0.875rem',

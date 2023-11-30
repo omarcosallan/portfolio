@@ -18,11 +18,9 @@ export const globalStyles = globalCss({
       content: '""',
       position: 'absolute',
       width: '100%',
-      height: '100vh',
-      // backgroundImage:
-      //   'radial-gradient(circle at 15% 50%, rgb(44 34 80), rgba(255, 255, 255, 0) 15%), radial-gradient(circle at 85% 30%, rgb(44 34 80), rgba(255, 255, 255, 0) 15%);',
+      height: '100%',
       background:
-        'radial-gradient(800px at top, rgba(29, 78, 216, 0.15) 0%, transparent 80%)',
+        'radial-gradient(1000px at top, rgba(29, 78, 216, 0.15) 0%, transparent 80%)',
       pointerEvents: 'none',
     },
   },

@@ -10,15 +10,18 @@ export const ButtonContainer = styled('button', {
   backgroundColor: '$violet',
   color: '$white',
   fontSize: '0.875rem',
-  fontWeight: 500,
   lineHeight: '1.5rem',
   letterSpacing: '0.025rem',
   cursor: 'pointer',
 
-  border: 'none',
+  border: '1px solid transparent',
+  // boxShadow:
+  //   '0px 1px 5px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.20)',
 
   '&:hover': {
-    filter: 'brightness(1.2)',
+    boxShadow: '0px 0px 30px 0px #2C2250',
+
+    border: '1px solid $violet',
     transition: 'all .20s ease',
   },
 
@@ -46,14 +49,18 @@ export const ButtonContainer = styled('button', {
         },
 
         '&:hover': {
-          backgroundColor: '$background',
+          color: '$textSecondary',
+
+          svg: {
+            color: '$textSecondary',
+          },
         },
       },
     },
     outlined: {
-      violet: { border: '2px solid $violet' },
-      secondary: { border: '2px solid $textSecondary' },
-      white: { border: '2px solid $white' },
+      violet: { border: '1px solid $violet' },
+      secondary: { border: '1px solid $textSecondary' },
+      white: { border: '1px solid $white' },
     },
   },
 })
