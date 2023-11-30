@@ -8,15 +8,11 @@ import {
   GraduationCap,
 } from '@phosphor-icons/react'
 
-import {
-  AboutMe,
-  Card,
-  HomeContainer,
-  IconWrraper,
-  Intro,
-} from '@/styles/pages/home'
+import { HomeContainer, Intro, IntroducingMyself } from '@/styles/pages/home'
 
 import Link from 'next/link'
+import IconWrapper from '@/components/IconWrapper'
+import Card from '@/components/Card'
 
 interface GithubProfile {
   name: string
@@ -44,46 +40,53 @@ export default function Home({ user }: HomeProps) {
         </Link>
       </Intro>
 
-      <AboutMe>
+      <IntroducingMyself>
         <Card>
-          <IconWrraper>
+          <IconWrapper>
             <GraduationCap weight="bold" size={24} />
-          </IconWrraper>
+          </IconWrapper>
 
           <h2>Início</h2>
 
           <p>
-            Em 2021, inicie a Licenciatura em COmputação na UFERSA. Cursei
-            diversas disciplinas na area da programação, incluindo POO e Java.
+            Em 2021, iniciei minha jornada acadêmica na UFERSA, onde me
+            matriculei na Licenciatura em Computação. Durante esse período,
+            explorei diversas disciplinas na área da programação, destacando-me
+            em tópicos como Programação Orientada a Objetos (POO) e Java.
           </p>
         </Card>
 
         <Card>
-          <IconWrraper>
+          <IconWrapper>
             <MedalMilitary weight="bold" size={24} />
-          </IconWrraper>
+          </IconWrapper>
 
           <h2>Progresso</h2>
 
           <p>
             No ano seguinte, participei do programa Oracle Next Education (ONE),
-            parceria Oracle e Alura.
+            uma colaboração entre a Oracle e a Alura. Essa experiência
+            enriqueceu meu conhecimento e me proporcionou uma visão mais prática
+            e aplicada dos conceitos aprendidos em sala de aula.
           </p>
         </Card>
 
         <Card>
-          <IconWrraper>
+          <IconWrapper>
             <Rocket weight="bold" size={24} />
-          </IconWrraper>
+          </IconWrapper>
 
           <h2>Rocketseat</h2>
 
           <p>
-            Iniciei no Back-end, mas me apaixonei pela programação Front-end
-            depois de consumir muito conteúdo da Rocket.
+            Minha jornada na programação ganhou novos horizontes quando descobri
+            a Rocketseat. Inicialmente focado no Back-end, meu entusiasmo
+            rapidamente se voltou para o universo fascinante do Front-end após
+            consumir uma quantidade significativa de conteúdo fornecido pela
+            plataforma.
           </p>
         </Card>
-      </AboutMe>
+      </IntroducingMyself>
     </HomeContainer>
   )
 }
