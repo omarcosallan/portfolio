@@ -8,5 +8,5 @@ export const Container = styled('div', {
   width: '100%',
   maxWidth: '1160px',
   margin: '0 auto',
-  padding: '6rem 0',
+  padding: '$10 0',
 })

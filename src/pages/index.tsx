@@ -6,6 +6,9 @@ import {
   ArrowSquareOut,
   MedalMilitary,
   GraduationCap,
+  Users,
+  Globe,
+  ClockCounterClockwise,
 } from '@phosphor-icons/react'
 
 import {
@@ -14,6 +17,7 @@ import {
   HomeContainer,
   Intro,
   IntroducingMyself,
+  Presentation,
   SummaryCard,
   TitleSection,
 } from '@/styles/pages/home'
@@ -38,83 +42,101 @@ interface HomeProps {
 export default function Home({ user }: HomeProps) {
   return (
     <HomeContainer>
-      <Intro>
-        <h1>Marcos Dev</h1>
-        <p>{user.bio}</p>
+      <Presentation>
+        <Intro>
+          <h1>Marcos Dev</h1>
+          <p>{user.bio}</p>
 
-        <Link href={user.htmlUrl} target="_blank">
-          <Button>
-            GitHub
-            <ArrowSquareOut weight="bold" />
-          </Button>
-        </Link>
-      </Intro>
+          <Link href={user.htmlUrl} target="_blank">
+            <Button>
+              GitHub
+              <ArrowSquareOut weight="bold" />
+            </Button>
+          </Link>
+        </Intro>
 
-      <IntroducingMyself>
-        <Card>
-          <IconWrapper>
-            <GraduationCap weight="bold" size={24} />
-          </IconWrapper>
+        <IntroducingMyself>
+          <Card>
+            <IconWrapper>
+              <GraduationCap weight="bold" size={24} />
+            </IconWrapper>
 
-          <h2>Início</h2>
+            <h2>Início</h2>
 
-          <p>
-            Em 2021, iniciei minha jornada acadêmica na UFERSA, onde me
-            matriculei na Licenciatura em Computação. Durante esse período,
-            explorei diversas disciplinas na área da programação, destacando-me
-            em tópicos como Programação Orientada a Objetos (POO) e Java.
-          </p>
-        </Card>
+            <p>
+              Em 2021, iniciei minha jornada acadêmica na UFERSA, onde me
+              matriculei na Licenciatura em Computação. Durante esse período,
+              explorei diversas disciplinas na área da programação,
+              destacando-me em tópicos como Programação Orientada a Objetos
+              (POO) e Java.
+            </p>
+          </Card>
 
-        <Card>
-          <IconWrapper>
-            <MedalMilitary weight="bold" size={24} />
-          </IconWrapper>
+          <Card>
+            <IconWrapper>
+              <MedalMilitary weight="bold" size={24} />
+            </IconWrapper>
 
-          <h2>Progresso</h2>
+            <h2>Progresso</h2>
 
-          <p>
-            No ano seguinte, participei do programa Oracle Next Education (ONE),
-            uma colaboração entre a Oracle e a Alura. Essa experiência
-            enriqueceu meu conhecimento e me proporcionou uma visão mais prática
-            e aplicada dos conceitos aprendidos em sala de aula.
-          </p>
-        </Card>
+            <p>
+              No ano seguinte, participei do programa Oracle Next Education
+              (ONE), uma colaboração entre a Oracle e a Alura. Essa experiência
+              enriqueceu meu conhecimento e me proporcionou uma visão mais
+              prática e aplicada dos conceitos aprendidos em sala de aula.
+            </p>
+          </Card>
 
-        <Card>
-          <IconWrapper>
-            <Rocket weight="bold" size={24} />
-          </IconWrapper>
+          <Card>
+            <IconWrapper>
+              <Rocket weight="bold" size={24} />
+            </IconWrapper>
 
-          <h2>Rocketseat</h2>
+            <h2>Rocketseat</h2>
 
-          <p>
-            Minha jornada na programação ganhou novos horizontes quando descobri
-            a Rocketseat. Inicialmente focado no Back-end, meu entusiasmo
-            rapidamente se voltou para o universo fascinante do Front-end após
-            consumir uma quantidade significativa de conteúdo fornecido pela
-            plataforma.
-          </p>
-        </Card>
-      </IntroducingMyself>
+            <p>
+              Minha jornada na programação ganhou novos horizontes quando
+              descobri a Rocketseat. Inicialmente focado no Back-end, meu
+              entusiasmo rapidamente se voltou para o universo fascinante do
+              Front-end após consumir uma quantidade significativa de conteúdo
+              fornecido pela plataforma.
+            </p>
+          </Card>
+        </IntroducingMyself>
+      </Presentation>
 
       <GitHubSummary>
         <TitleSection>Resumo do GitHub</TitleSection>
 
         <div>
           <SummaryCard>
-            <span>Seguidores</span>
-            <strong>{user.followers}</strong>
+            <IconWrapper>
+              <ClockCounterClockwise weight="bold" size={24} />
+            </IconWrapper>
+            <div>
+              <span>Usuário desde</span>
+              <strong>{user.createdAt}</strong>
+            </div>
           </SummaryCard>
 
           <SummaryCard>
-            <span>Repositórios públicos</span>
-            <strong>{user.publicRepos}</strong>
+            <IconWrapper>
+              <Users weight="bold" size={24} />
+            </IconWrapper>
+            <div>
+              <span>Seguidores</span>
+              <strong>{user.followers}</strong>
+            </div>
           </SummaryCard>
 
           <SummaryCard>
-            <span>Usuário desde</span>
-            <strong>{user.createdAt}</strong>
+            <IconWrapper>
+              <Globe weight="bold" size={24} />
+            </IconWrapper>
+            <div>
+              <span>Repositórios públicos</span>
+              <strong>{user.publicRepos}</strong>
+            </div>
           </SummaryCard>
         </div>
       </GitHubSummary>

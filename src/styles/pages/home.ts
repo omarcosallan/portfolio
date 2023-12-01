@@ -2,14 +2,19 @@ import { styled } from '..'
 
 export const HomeContainer = styled('main', {})
 
+export const Presentation = styled('div', {
+  minHeight: '100vh',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-evenly',
+})
+
 export const Intro = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
   textAlign: 'center',
-  marginBottom: '$16',
-  height: '45vh',
 
   h1: {
     fontSize: '$4xl',
@@ -56,7 +61,7 @@ export const SectionContainer = styled('div', {
 export const GitHubSummary = styled(SectionContainer, {
   '>div': {
     display: 'grid',
-    gridTemplateColumns: 'repeat(3, .8fr)',
+    gridTemplateColumns: 'repeat(3, 1fr)',
     gap: '$16',
 
     width: 'calc(100% - $16)',
@@ -65,6 +70,9 @@ export const GitHubSummary = styled(SectionContainer, {
 })
 
 export const SummaryCard = styled('div', {
+  display: 'grid',
+  gridTemplateColumns: '20% 80%',
+
   span: {
     display: 'block',
     fontSize: '$sm',
