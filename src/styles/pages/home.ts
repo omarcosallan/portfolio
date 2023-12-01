@@ -1,4 +1,22 @@
-import { styled } from '..'
+import { keyframes, styled } from '..'
+
+const slideTop = keyframes({
+  '0%': {
+    transform: 'translateY(-100%)',
+  },
+  '100%': {
+    transform: 'translateY(0%)',
+  },
+})
+
+const slideBottom = keyframes({
+  '0%': {
+    transform: 'translateY(200%)',
+  },
+  '100%': {
+    transform: 'translateY(0%)',
+  },
+})
 
 export const HomeContainer = styled('main', {})
 
@@ -6,6 +24,7 @@ export const Presentation = styled('div', {
   minHeight: '100vh',
   display: 'flex',
   flexDirection: 'column',
+  gap: '$16',
   justifyContent: 'space-evenly',
 })
 
@@ -15,6 +34,8 @@ export const Intro = styled('div', {
   alignItems: 'center',
   justifyContent: 'center',
   textAlign: 'center',
+
+  animation: `${slideTop} 0.4s cubic-bezier(0.16, 1, 0.3, 1)`,
 
   h1: {
     fontSize: '$4xl',
@@ -38,6 +59,8 @@ export const IntroducingMyself = styled('ul', {
   gridTemplateColumns: 'repeat(3, 1fr)',
   alignItems: 'flex-start',
   gap: '$12',
+
+  animation: `${slideBottom} 0.4s cubic-bezier(0.16, 1, 0.3, 1)`,
 
   h2: {
     fontSize: '$lg',
@@ -91,6 +114,6 @@ export const Experiences = styled(SectionContainer, {
     marginTop: '$6',
   },
 
-  backgroundImage:
+  background:
     'radial-gradient(300px 50% 50%, rgba(29, 78, 216, 0.15) 0%, transparent 80%)',
 })
