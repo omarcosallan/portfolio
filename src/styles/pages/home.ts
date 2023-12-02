@@ -150,7 +150,7 @@ export const Projects = styled(SectionContainer, {
     color: '$slate50',
 
     '&:hover': {
-      h3: {
+      strong: {
         color: '$indigo400',
 
         svg: {
@@ -164,16 +164,17 @@ export const Projects = styled(SectionContainer, {
 
   span: {
     fontSize: '$xs',
+    fontWeight: 700,
     lineHeight: '1.25rem',
   },
 
-  h3: {
+  strong: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     gap: '$3',
-    fontSize: '$xl',
-    marginBottom: '$2',
+    fontSize: '$lg',
+    color: '$slate50',
   },
 
   p: {
@@ -182,10 +183,10 @@ export const Projects = styled(SectionContainer, {
     color: '$slate50',
     fontWeight: 700,
     width: 'max-content',
-    padding: '$1 $5',
+    padding: '$1 $4',
     textAlign: 'center',
     fontSize: '$xs',
-    marginTop: '$7',
+    marginTop: '$5',
 
     boxShadow: '0 0 #0000, 0 0 #0000, inset 0 1px 0 0 rgba(148,163,184,.1)',
   },

@@ -200,11 +200,11 @@ export default function Home({ user, repos }: HomeProps) {
               <Link key={repo.id} href={repo.link} target="_blank">
                 <Card>
                   <div>
-                    <h3>
+                    <span>{repo.createdAt}</span>
+                    <strong>
                       {repo.name}
                       <ArrowUpRight weight="bold" size={24} />
-                    </h3>
-                    <span>Criado em: {repo.createdAt}</span>
+                    </strong>
                   </div>
 
                   <p>{repo.language}</p>
@@ -228,99 +228,98 @@ export default function Home({ user, repos }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  // const responseUser = await api.get('users/omarcosallan')
-  // const dataUser = await responseUser.data
+  const responseUser = await api.get('users/omarcosallan')
+  const dataUser = await responseUser.data
 
-  // const responseRepos = await api.get('users/omarcosallan/repos', {
-  //   params: {
-  //     sort: 'created',
-  //     direction: 'desc',
-  //     per_page: '8',
-  //   },
-  // })
-  // const dataRepos = await responseRepos.data
-
-  // const user = {
-  //   name: dataUser.name,
-  //   username: dataUser.login,
-  //   bio: dataUser.bio,
-  //   followers: dataUser.followers,
-  //   htmlUrl: dataUser.html_url,
-  //   publicRepos: dataUser.public_repos,
-  //   createdAt: new Intl.DateTimeFormat('pt-BR', {
-  //     month: 'long',
-  //     year: 'numeric',
-  //   }).format(new Date(dataUser.created_at)),
-  // }
-
-  // const repos = dataRepos.map((repo: RepositoryResponse) => {
-  //   return {
-  //     id: repo.id,
-  //     name: repo.name,
-  //     createdAt: new Intl.DateTimeFormat('pt-BR', {
-  //       month: 'long',
-  //       year: 'numeric',
-  //     }).format(new Date(repo.created_at)),
-  //     language: repo.language,
-  //     link: repo.html_url,
-  //   }
-  // })
+  const responseRepos = await api.get('users/omarcosallan/repos', {
+    params: {
+      sort: 'created',
+      direction: 'desc',
+      per_page: '8',
+    },
+  })
+  const dataRepos = await responseRepos.data
 
   const user = {
-    name: 'Marcos Allan',
-    username: 'omarcosallan',
-    bio: 'Desenvolvedor em formação. Cursando Licenciatura em Computação pela UFERSA. Apaixonado por computação. #HTML #CSS #JavaScript #React',
-    followers: 20,
-    htmlUrl: '',
-    publicRepos: 30,
+    name: dataUser.name,
+    username: dataUser.login,
+    bio: dataUser.bio,
+    followers: dataUser.followers,
+    htmlUrl: dataUser.html_url,
+    publicRepos: dataUser.public_repos,
     createdAt: new Intl.DateTimeFormat('pt-BR', {
       month: 'long',
       year: 'numeric',
-    }).format(new Date('2023-11-28T21:13:23Z')),
+    }).format(new Date(dataUser.created_at)),
   }
 
-  const repos = [
-    {
-      id: 724816159,
-      name: 'portfolio',
+  const repos = dataRepos.map((repo: RepositoryResponse) => {
+    return {
+      id: repo.id,
+      name: repo.name,
       createdAt: new Intl.DateTimeFormat('pt-BR', {
-        month: 'long',
         year: 'numeric',
-      }).format(new Date('2023-11-28T21:13:23Z')),
-      language: 'Typescript',
-      link: 'https://github.com/omarcosallan/portfolio',
-    },
-    {
-      id: 724221556,
-      name: 'ignite-shop',
-      createdAt: new Intl.DateTimeFormat('pt-BR', {
-        month: 'long',
-        year: 'numeric',
-      }).format(new Date('2023-11-28T21:13:23Z')),
-      language: 'Typescript',
-      link: 'https://github.com/omarcosallan/portfolio',
-    },
-    {
-      id: 724221556,
-      name: 'ignite-shop',
-      createdAt: new Intl.DateTimeFormat('pt-BR', {
-        month: 'long',
-        year: 'numeric',
-      }).format(new Date('2023-11-28T21:13:23Z')),
-      language: 'Typescript',
-      link: 'https://github.com/omarcosallan/portfolio',
-    },
-    {
-      id: 724221556,
-      name: 'ignite-shop',
-      createdAt: new Intl.DateTimeFormat('pt-BR', {
-        month: 'long',
-        year: 'numeric',
-      }).format(new Date('2023-11-28T21:13:23Z')),
-      language: 'Typescript',
-      link: 'https://github.com/omarcosallan/portfolio',
-    },
-  ]
+      }).format(new Date(repo.created_at)),
+      language: repo.language,
+      link: repo.html_url,
+    }
+  })
+
+  // const user = {
+  //   name: 'Marcos Allan',
+  //   username: 'omarcosallan',
+  //   bio: 'Desenvolvedor em formação. Cursando Licenciatura em Computação pela UFERSA. Apaixonado por computação. #HTML #CSS #JavaScript #React',
+  //   followers: 20,
+  //   htmlUrl: '',
+  //   publicRepos: 30,
+  //   createdAt: new Intl.DateTimeFormat('pt-BR', {
+  //     month: 'long',
+  //     year: 'numeric',
+  //   }).format(new Date('2023-11-28T21:13:23Z')),
+  // }
+
+  // const repos = [
+  //   {
+  //     id: 724816159,
+  //     name: 'portfolio',
+  //     createdAt: new Intl.DateTimeFormat('pt-BR', {
+  //       month: 'long',
+  //       year: 'numeric',
+  //     }).format(new Date('2023-11-28T21:13:23Z')),
+  //     language: 'Typescript',
+  //     link: 'https://github.com/omarcosallan/portfolio',
+  //   },
+  //   {
+  //     id: 724221556,
+  //     name: 'ignite-shop',
+  //     createdAt: new Intl.DateTimeFormat('pt-BR', {
+  //       month: 'long',
+  //       year: 'numeric',
+  //     }).format(new Date('2023-11-28T21:13:23Z')),
+  //     language: 'Typescript',
+  //     link: 'https://github.com/omarcosallan/portfolio',
+  //   },
+  //   {
+  //     id: 724221556,
+  //     name: 'ignite-shop',
+  //     createdAt: new Intl.DateTimeFormat('pt-BR', {
+  //       month: 'long',
+  //       year: 'numeric',
+  //     }).format(new Date('2023-11-28T21:13:23Z')),
+  //     language: 'Typescript',
+  //     link: 'https://github.com/omarcosallan/portfolio',
+  //   },
+  //   {
+  //     id: 724221556,
+  //     name: 'ignite-shop',
+  //     createdAt: new Intl.DateTimeFormat('pt-BR', {
+  //       month: 'long',
+  //       year: 'numeric',
+  //     }).format(new Date('2023-11-28T21:13:23Z')),
+  //     language: 'Typescript',
+  //     link: 'https://github.com/omarcosallan/portfolio',
+  //   },
+  // ]
 
   return {
     props: {

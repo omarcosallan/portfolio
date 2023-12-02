@@ -23,8 +23,7 @@ export const CardContainer = styled('div', {
     borderRadius: 'inherit',
     zIndex: '-1',
 
-    background:
-      'linear-gradient(45deg, rgba(255, 255, 255, 0), $slate800 100%)',
+    background: '$slate800',
     boxShadow: '0 0 #0000, 0 0 #0000, inset 0 1px 0 0 rgba(148,163,184,.1)',
     opacity: 0,
   },
