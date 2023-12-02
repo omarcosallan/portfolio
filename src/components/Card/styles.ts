@@ -2,17 +2,15 @@ import { styled } from '@/styles'
 
 export const CardContainer = styled('div', {
   position: 'relative',
-  padding: '2rem',
-  color: '$text',
+  padding: '$12',
+  color: '$slate400',
   borderRadius: '$sm',
 
-  fontSize: '0.875rem',
+  fontSize: '$sm',
   fontWeight: '500',
   lineHeight: '160%',
 
   cursor: 'pointer',
-
-  'h1, h2, h3': { color: '$white', marginBottom: '0.875rem' },
 
   '&::before': {
     content: `''`,
@@ -26,14 +24,14 @@ export const CardContainer = styled('div', {
     zIndex: '-1',
 
     background:
-      'linear-gradient(45deg, rgba(255, 255, 255, 0), rgb(19 30 54) 50%)',
+      'linear-gradient(45deg, rgba(255, 255, 255, 0), $slate800 100%)',
     boxShadow: '0 0 #0000, 0 0 #0000, inset 0 1px 0 0 rgba(148,163,184,.1)',
-    transition: 'all .50s ease',
     opacity: 0,
   },
 
   '&:hover::before': {
     opacity: 1,
+    transition: 'all .15s cubic-bezier(.4,0,.2,1)',
   },
 
   variants: {

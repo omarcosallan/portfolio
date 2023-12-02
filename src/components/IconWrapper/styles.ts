@@ -10,11 +10,10 @@ export const IconWrapperContainer = styled('div', {
 
   marginBottom: '1.5rem',
 
-  background:
-    'linear-gradient(0deg, rgba(255, 255, 255, 0), rgb(19 30 54) 35%)',
+  backgroundColor: '$slate800',
   boxShadow: '0 0 #0000, 0 0 #0000, inset 0 1px 0 0 rgba(148,163,184,.1)',
 
   svg: {
-    color: '$textSecondary',
+    color: '$slate50',
   },
 })

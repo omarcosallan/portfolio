@@ -7,58 +7,34 @@ export const ButtonContainer = styled('button', {
   gap: '0.5rem',
 
   borderRadius: '$sm',
-  backgroundColor: '$violet',
-  color: '$white',
+  backgroundColor: '$indigo600',
+  color: '$slate50',
   fontSize: '0.875rem',
   lineHeight: '1.5rem',
-  letterSpacing: '0.025rem',
-  cursor: 'pointer',
 
   border: '1px solid transparent',
 
   '&:hover': {
-    boxShadow: '0px 0px 30px 0px #2C2250',
-
-    border: '1px solid $violet',
-    transition: 'all .20s ease',
+    backgroundColor: '$indigo500',
+    transition: 'all .15s cubic-bezier(.4,0,.2,1)',
   },
 
   svg: {
-    color: '$white',
+    color: '$slate50',
     fontSize: '0.875rem',
   },
 
   variants: {
     color: {
-      secondary: {
-        backgroundColor: '$violetSecondary',
-        color: '$textSecondary',
-
-        svg: {
-          color: '$textSecondary',
-        },
-      },
       transparent: {
-        backgroundColor: 'transparent',
-        color: '$white',
+        backgroundColor: '$slate800',
+        boxShadow: '0 0 #0000, 0 0 #0000, inset 0 1px 0 0 rgba(148,163,184,.1)',
+        color: '$indigo600',
 
         svg: {
-          color: '$white',
-        },
-
-        '&:hover': {
-          color: '$textSecondary',
-
-          svg: {
-            color: '$textSecondary',
-          },
+          color: '$indigo600',
         },
       },
-    },
-    outlined: {
-      violet: { border: '1px solid $violet' },
-      secondary: { border: '1px solid $textSecondary' },
-      white: { border: '1px solid $white' },
     },
   },
 })

@@ -8,8 +8,8 @@ export const globalStyles = globalCss({
   },
 
   body: {
-    backgroundColor: '$background',
-    color: '$colorTitle',
+    backgroundColor: '$slate900',
+    color: '$slate50',
     '-webkit-font-smoothing': 'antialiased',
     minHeight: '100vh',
     position: 'relative',
@@ -20,13 +20,20 @@ export const globalStyles = globalCss({
       width: '100%',
       height: '100%',
       background:
-        'radial-gradient(1000px at top, rgba(29, 78, 216, 0.15) 0%, transparent 80%)',
+        'radial-gradient(circle at 30% 30%, $indigo500, rgba(255, 255, 255, 0) 25%), radial-gradient(circle at 85% 15%, $cyan600, rgba(255, 255, 255, 0) 25%),radial-gradient(circle at 85% 85%, $indigo500, rgba(255, 255, 255, 0) 25%)',
       pointerEvents: 'none',
+      opacity: '.2',
     },
   },
 
   'body, input, textarea, button': {
     fontFamily: 'Inter',
     fontWeight: 400,
+  },
+
+  'h1, h2, h3': { color: '$slate50', marginBottom: '0.875rem' },
+
+  button: {
+    cursor: 'pointer',
   },
 })

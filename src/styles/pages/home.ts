@@ -26,6 +26,7 @@ export const Presentation = styled('div', {
   flexDirection: 'column',
   gap: '$16',
   justifyContent: 'space-evenly',
+  overflow: 'hidden',
 })
 
 export const Intro = styled('div', {
@@ -38,12 +39,11 @@ export const Intro = styled('div', {
   animation: `${slideTop} 0.4s cubic-bezier(0.16, 1, 0.3, 1)`,
 
   h1: {
-    fontSize: '$4xl',
-    marginBottom: '$6',
+    fontSize: '$5xl',
   },
 
   p: {
-    color: '$text',
+    color: '$slate400',
     fontSize: '$base',
     maxWidth: '50%',
   },
@@ -63,15 +63,15 @@ export const IntroducingMyself = styled('ul', {
   animation: `${slideBottom} 0.4s cubic-bezier(0.16, 1, 0.3, 1)`,
 
   h2: {
-    fontSize: '$lg',
+    fontSize: '$xl',
   },
 
-  p: { fontSize: '$sm' },
+  p: { fontSize: '$sm', color: '$slate400' },
 })
 
 export const TitleSection = styled('h2', {
-  fontSize: '$2xl',
-  marginBottom: '$16',
+  fontSize: '$4xl',
+  marginBottom: '$12',
 })
 
 export const SectionContainer = styled('div', {
@@ -83,29 +83,32 @@ export const SectionContainer = styled('div', {
 
 export const GitHubSummary = styled(SectionContainer, {
   '>div': {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
+    display: 'flex',
     gap: '$16',
-
-    width: 'calc(100% - $16)',
-    boxShadow: '0 0 0 1px $violet',
   },
 })
 
 export const SummaryCard = styled('div', {
-  display: 'grid',
-  gridTemplateColumns: '20% 80%',
+  width: '100%',
+  minWidth: '240px',
+  padding: '$12',
+  borderRadius: '$sm',
+  position: 'relative',
+
+  background: 'linear-gradient(0deg, rgba(255,255,255, 0), $slate800 100%)',
+
+  boxShadow: '0 0 #0000, 0 0 #0000, inset 0 1px 0 0 rgba(148,163,184,.1)',
 
   span: {
     display: 'block',
     fontSize: '$sm',
-    color: '$text',
+    color: '$slate400',
     marginBottom: '$3',
   },
 
   strong: {
     fontSize: '$4xl',
-    color: '$white',
+    color: '$slate50',
   },
 })
 
@@ -114,6 +117,80 @@ export const Experiences = styled(SectionContainer, {
     marginTop: '$6',
   },
 
-  background:
-    'radial-gradient(300px 50% 50%, rgba(29, 78, 216, 0.15) 0%, transparent 80%)',
+  color: '$slate400',
+
+  '>div': {
+    backgroundColor: '$slate800',
+    padding: '$12',
+    borderRadius: '$sm',
+    border: '1px solid rgba(148,163,184,.1)',
+    fontSize: '$sm',
+    lineHeight: '160%',
+  },
+})
+
+export const Projects = styled(SectionContainer, {
+  ul: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '$12',
+    width: '100%',
+  },
+
+  a: {
+    '>div': {
+      height: '100%',
+
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+    },
+
+    textDecoration: 'none',
+    color: '$slate50',
+
+    '&:hover': {
+      h3: {
+        color: '$indigo400',
+
+        svg: {
+          color: '$indigo400',
+          transform: 'translate(0.25rem, -0.25rem)',
+          transition: 'all .15s cubic-bezier(.4,0,.2,1)',
+        },
+      },
+    },
+  },
+
+  span: {
+    fontSize: '$xs',
+    lineHeight: '1.25rem',
+  },
+
+  h3: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: '$3',
+    fontSize: '$xl',
+    marginBottom: '$2',
+  },
+
+  p: {
+    borderRadius: '99999px',
+    backgroundColor: '$indigo500',
+    color: '$slate50',
+    fontWeight: 700,
+    width: 'max-content',
+    padding: '$1 $5',
+    textAlign: 'center',
+    fontSize: '$xs',
+    marginTop: '$7',
+
+    boxShadow: '0 0 #0000, 0 0 #0000, inset 0 1px 0 0 rgba(148,163,184,.1)',
+  },
+
+  button: {
+    marginTop: '$12',
+  },
 })

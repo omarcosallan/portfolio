@@ -12,24 +12,33 @@ export const {
 } = createStitches({
   theme: {
     colors: {
-      white: '#FFF',
+      slate50: '#f8fafc',
+      slate200: '#e2e8f0',
+      slate300: '#cbd5e1',
+      slate400: '#94a3b8',
+      slate500: '#64748b',
+      slate800: '#1e293b',
+      slate900: '#0f172a',
 
-      background: '#0F172A',
-      cardBackground: 'rgba(15, 23, 42, 0.5)',
+      indigo400: '#818cf8',
+      indigo500: '#6366f1',
+      indigo600: '#4f46e5',
 
-      colorTitle: '#E2E8F0',
-      text: '#94A3B8',
-      textSecondary: '#9E8CFC',
-
-      violet: '#6147FF',
-      violetSecondary: '#2c2250',
+      cyan600: '#0891b2',
     },
     fontSizes: {
+      xs: '0.75rem',
       sm: '0.875rem',
       md: '1rem',
       lg: '1.25rem',
-      '2xl': '2.25rem',
-      '4xl': '3rem',
+      xl: '1.5rem',
+      '2xl': '2rem',
+      '4xl': '2.25rem',
+      '5xl': '3rem',
+      '6xl': '3.75rem',
+      '7xl': '4.5rem',
+      '8xl': '6rem',
+      '9xl': '8rem',
     },
     radii: {
       sm: '6px',

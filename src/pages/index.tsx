@@ -9,6 +9,7 @@ import {
   Users,
   Globe,
   ClockCounterClockwise,
+  ArrowUpRight,
 } from '@phosphor-icons/react'
 
 import {
@@ -18,6 +19,7 @@ import {
   Intro,
   IntroducingMyself,
   Presentation,
+  Projects,
   SummaryCard,
   TitleSection,
 } from '@/styles/pages/home'
@@ -28,6 +30,7 @@ import Card from '@/components/Card'
 
 interface GithubProfile {
   name: string
+  username: string
   bio: string
   followers: number
   htmlUrl: string
@@ -35,11 +38,26 @@ interface GithubProfile {
   createdAt: string
 }
 
-interface HomeProps {
-  user: GithubProfile
+interface RepositoryResponse {
+  id: number
+  name: string
+  created_at: string
+  language: string
+  html_url: string
 }
 
-export default function Home({ user }: HomeProps) {
+interface Repository
+  extends Omit<RepositoryResponse, 'created_at' | 'html_url'> {
+  createdAt: string
+  link: string
+}
+
+interface HomeProps {
+  user: GithubProfile
+  repos: Repository[]
+}
+
+export default function Home({ user, repos }: HomeProps) {
   return (
     <HomeContainer>
       <Presentation>
@@ -144,7 +162,7 @@ export default function Home({ user }: HomeProps) {
       <Experiences>
         <TitleSection>Experiências</TitleSection>
 
-        <Card filled>
+        <div>
           <p>
             Em 2021, dei início à minha jornada acadêmica ao ingressar na
             Licenciatura em Computação. Foi nesse período que tive meu primeiro
@@ -170,32 +188,145 @@ export default function Home({ user }: HomeProps) {
             aprimorar minhas habilidades técnicas, mas também contribuir para
             projetos inovadores e impactantes.
           </p>
-        </Card>
+        </div>
       </Experiences>
+
+      <Projects>
+        <TitleSection>Projetos</TitleSection>
+
+        <ul>
+          {repos.map((repo) => {
+            return (
+              <Link key={repo.id} href={repo.link} target="_blank">
+                <Card>
+                  <div>
+                    <h3>
+                      {repo.name}
+                      <ArrowUpRight weight="bold" size={24} />
+                    </h3>
+                    <span>Criado em: {repo.createdAt}</span>
+                  </div>
+
+                  <p>{repo.language}</p>
+                </Card>
+              </Link>
+            )
+          })}
+        </ul>
+
+        <Button color="transparent">
+          <Link
+            href={'https://github.com/omarcosallan?tab=repositories'}
+            target="_blank"
+          >
+            Mais projetos
+          </Link>
+        </Button>
+      </Projects>
     </HomeContainer>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await api.get('users/omarcosallan')
-  const data = await response.data
+  // const responseUser = await api.get('users/omarcosallan')
+  // const dataUser = await responseUser.data
+
+  // const responseRepos = await api.get('users/omarcosallan/repos', {
+  //   params: {
+  //     sort: 'created',
+  //     direction: 'desc',
+  //     per_page: '8',
+  //   },
+  // })
+  // const dataRepos = await responseRepos.data
+
+  // const user = {
+  //   name: dataUser.name,
+  //   username: dataUser.login,
+  //   bio: dataUser.bio,
+  //   followers: dataUser.followers,
+  //   htmlUrl: dataUser.html_url,
+  //   publicRepos: dataUser.public_repos,
+  //   createdAt: new Intl.DateTimeFormat('pt-BR', {
+  //     month: 'long',
+  //     year: 'numeric',
+  //   }).format(new Date(dataUser.created_at)),
+  // }
+
+  // const repos = dataRepos.map((repo: RepositoryResponse) => {
+  //   return {
+  //     id: repo.id,
+  //     name: repo.name,
+  //     createdAt: new Intl.DateTimeFormat('pt-BR', {
+  //       month: 'long',
+  //       year: 'numeric',
+  //     }).format(new Date(repo.created_at)),
+  //     language: repo.language,
+  //     link: repo.html_url,
+  //   }
+  // })
 
   const user = {
-    name: data.name,
-    bio: data.bio,
-    followers: data.followers,
-    htmlUrl: data.html_url,
-    publicRepos: data.public_repos,
+    name: 'Marcos Allan',
+    username: 'omarcosallan',
+    bio: 'Desenvolvedor em formação. Cursando Licenciatura em Computação pela UFERSA. Apaixonado por computação. #HTML #CSS #JavaScript #React',
+    followers: 20,
+    htmlUrl: '',
+    publicRepos: 30,
     createdAt: new Intl.DateTimeFormat('pt-BR', {
       month: 'long',
       year: 'numeric',
-    }).format(new Date(data.created_at)),
+    }).format(new Date('2023-11-28T21:13:23Z')),
   }
+
+  const repos = [
+    {
+      id: 724816159,
+      name: 'portfolio',
+      createdAt: new Intl.DateTimeFormat('pt-BR', {
+        month: 'long',
+        year: 'numeric',
+      }).format(new Date('2023-11-28T21:13:23Z')),
+      language: 'Typescript',
+      link: 'https://github.com/omarcosallan/portfolio',
+    },
+    {
+      id: 724221556,
+      name: 'ignite-shop',
+      createdAt: new Intl.DateTimeFormat('pt-BR', {
+        month: 'long',
+        year: 'numeric',
+      }).format(new Date('2023-11-28T21:13:23Z')),
+      language: 'Typescript',
+      link: 'https://github.com/omarcosallan/portfolio',
+    },
+    {
+      id: 724221556,
+      name: 'ignite-shop',
+      createdAt: new Intl.DateTimeFormat('pt-BR', {
+        month: 'long',
+        year: 'numeric',
+      }).format(new Date('2023-11-28T21:13:23Z')),
+      language: 'Typescript',
+      link: 'https://github.com/omarcosallan/portfolio',
+    },
+    {
+      id: 724221556,
+      name: 'ignite-shop',
+      createdAt: new Intl.DateTimeFormat('pt-BR', {
+        month: 'long',
+        year: 'numeric',
+      }).format(new Date('2023-11-28T21:13:23Z')),
+      language: 'Typescript',
+      link: 'https://github.com/omarcosallan/portfolio',
+    },
+  ]
 
   return {
     props: {
       user,
+      repos,
     },
-    revalidate: 60 * 60 * 24, // 1 hour
+    revalidate: 60 * 60 * 24, // 1 day
   }
 }
