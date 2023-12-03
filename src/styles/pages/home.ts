@@ -40,17 +40,18 @@ export const Intro = styled('div', {
 
   h1: {
     fontSize: '$5xl',
+    color: '$slate50',
   },
 
   p: {
     color: '$slate400',
-    fontSize: '$base',
-    maxWidth: '50%',
+    fontSize: '$md',
+    maxWidth: '70%',
   },
 
   a: {
     textDecoration: 'none',
-    marginTop: '$16',
+    marginTop: '$9',
   },
 })
 
@@ -78,13 +79,41 @@ export const SectionContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  marginTop: '$16',
+  marginTop: '7rem',
 })
 
 export const GitHubSummary = styled(SectionContainer, {
   '>div': {
     display: 'flex',
     gap: '$16',
+  },
+
+  figcaption: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '$7',
+    marginTop: '$3',
+
+    img: {
+      borderRadius: '99999px',
+    },
+
+    div: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      justifyContent: 'space-between',
+
+      strong: {
+        fontSize: '$md',
+        color: '$slate50',
+      },
+
+      span: {
+        fontSize: '$sm',
+        color: '$slate400',
+      },
+    },
   },
 })
 
@@ -96,8 +125,7 @@ export const SummaryCard = styled('div', {
   position: 'relative',
 
   background: 'linear-gradient(0deg, rgba(255,255,255, 0), $slate800 100%)',
-
-  boxShadow: '0 0 #0000, 0 0 #0000, inset 0 1px 0 0 rgba(148,163,184,.1)',
+  boxShadow: 'inset 0 1px 0 0 #ffffff0d',
 
   span: {
     display: 'block',
@@ -144,12 +172,17 @@ export const Projects = styled(SectionContainer, {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
+      border: '1px solid rgba(148,163,184,.1)',
     },
 
     textDecoration: 'none',
     color: '$slate50',
 
     '&:hover': {
+      '>div': {
+        borderColor: 'transparent',
+      },
+
       strong: {
         color: '$indigo400',
 
@@ -166,16 +199,28 @@ export const Projects = styled(SectionContainer, {
     fontSize: '$xs',
     fontWeight: 700,
     lineHeight: '1.25rem',
+    color: '$indigo400',
   },
 
   strong: {
     display: 'flex',
-    justifyContent: 'space-between',
     alignItems: 'center',
     gap: '$3',
     fontSize: '$lg',
     color: '$slate50',
   },
+
+  button: {
+    marginTop: '$12',
+  },
+})
+
+export const Tags = styled('div', {
+  display: 'flex',
+  gap: '$3',
+  rowGap: '$1',
+  flexWrap: 'wrap',
+  marginTop: '$8',
 
   p: {
     borderRadius: '99999px',
@@ -186,12 +231,71 @@ export const Projects = styled(SectionContainer, {
     padding: '$1 $4',
     textAlign: 'center',
     fontSize: '$xs',
-    marginTop: '$5',
 
-    boxShadow: '0 0 #0000, 0 0 #0000, inset 0 1px 0 0 rgba(148,163,184,.1)',
+    boxShadow: 'inset 0 1px 0 0 #ffffff0d',
+  },
+})
+
+export const CodeInsights = styled(SectionContainer, {
+  padding: '$12',
+  borderRadius: '$sm',
+  border: '1px solid rgba(148,163,184,.1)',
+
+  '>div': {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: '$16',
+
+    '>div': {
+      maxWidth: '414px',
+
+      div: {
+        marginTop: '$10',
+        paddingBottom: '$10',
+        borderBottom: '1px solid rgba(148,163,184,.1)',
+      },
+
+      'div:last-child': {
+        borderBottomColor: 'transparent',
+      },
+    },
   },
 
-  button: {
-    marginTop: '$12',
+  span: {
+    fontSize: '$xl',
+    fontWeight: 700,
+  },
+
+  p: {
+    color: '$slate400',
+    marginTop: '$3',
+    fontSize: '$sm',
+  },
+
+  img: {
+    objectFit: 'cover',
+    borderRadius: '$sm',
+    border: '1px solid rgba(148,163,184,.1)',
+    boxShadow: 'inset 0 1px 0 0 #ffffff0d',
+  },
+
+  a: {
+    textDecoration: 'none',
+    color: '$slate50',
+    button: {
+      color: '$slate50',
+
+      svg: {
+        color: '$slate50',
+      },
+    },
+
+    '&:hover': {
+      svg: {
+        transform: 'translate(0.25rem, -0.25rem)',
+        transition: 'all .15s cubic-bezier(.4,0,.2,1)',
+      },
+    },
   },
 })

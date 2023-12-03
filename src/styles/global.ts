@@ -20,7 +20,7 @@ export const globalStyles = globalCss({
       width: '100%',
       height: '100%',
       background:
-        'radial-gradient(circle at 30% 30%, $indigo500, rgba(255, 255, 255, 0) 25%), radial-gradient(circle at 85% 15%, $cyan600, rgba(255, 255, 255, 0) 25%),radial-gradient(circle at 85% 85%, $indigo500, rgba(255, 255, 255, 0) 25%)',
+        'radial-gradient(circle at 30% 80px, $indigo500, rgba(255, 255, 255, 0) 25%), radial-gradient(circle at 85% 15%, #f472b6, rgba(255, 255, 255, 0) 25%), radial-gradient(circle at 50% 60%, $indigo500, rgba(255, 255, 255, 0) 25%), radial-gradient(circle at 85% 85%, $indigo500, rgba(255, 255, 255, 0) 25%)',
       pointerEvents: 'none',
       opacity: '.2',
     },

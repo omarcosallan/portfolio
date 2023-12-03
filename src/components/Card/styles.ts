@@ -5,6 +5,7 @@ export const CardContainer = styled('div', {
   padding: '$12',
   color: '$slate400',
   borderRadius: '$sm',
+  overflow: 'hidden',
 
   fontSize: '$sm',
   fontWeight: '500',
@@ -24,7 +25,7 @@ export const CardContainer = styled('div', {
     zIndex: '-1',
 
     background: '$slate800',
-    boxShadow: '0 0 #0000, 0 0 #0000, inset 0 1px 0 0 rgba(148,163,184,.1)',
+    boxShadow: 'inset 0 1px 0 0 #ffffff0d',
     opacity: 0,
   },
 

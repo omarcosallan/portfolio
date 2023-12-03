@@ -13,6 +13,7 @@ import {
 } from '@phosphor-icons/react'
 
 import {
+  CodeInsights,
   Experiences,
   GitHubSummary,
   HomeContainer,
@@ -21,6 +22,7 @@ import {
   Presentation,
   Projects,
   SummaryCard,
+  Tags,
   TitleSection,
 } from '@/styles/pages/home'
 
@@ -28,9 +30,14 @@ import Link from 'next/link'
 import IconWrapper from '@/components/IconWrapper'
 import Card from '@/components/Card'
 
+import blogImg from '../assets/blog.png'
+import Image from 'next/image'
+
 interface GithubProfile {
   name: string
   username: string
+  avatar: string
+  company: string
   bio: string
   followers: number
   htmlUrl: string
@@ -42,7 +49,7 @@ interface RepositoryResponse {
   id: number
   name: string
   created_at: string
-  language: string
+  languages: string[]
   html_url: string
 }
 
@@ -62,8 +69,15 @@ export default function Home({ user, repos }: HomeProps) {
     <HomeContainer>
       <Presentation>
         <Intro>
-          <h1>Marcos Dev</h1>
-          <p>{user.bio}</p>
+          <h1>Bem vindo à Marcos Dev</h1>
+          {/* <p>{user.bio.substring(0, user.bio.indexOf(' #'))}</p> */}
+          <p>
+            Apaixonado por desenvolvimento web, sempre buscando as melhores
+            tecnologias para aprimorar minhas habilidades. Atualmente, estou
+            mergulhado no universo da programação enquanto curso Licenciatura em
+            Computação na UFERSA e consumo o conteúdo disponível na internet e
+            nos livros
+          </p>
 
           <Link href={user.htmlUrl} target="_blank">
             <Button>
@@ -157,6 +171,14 @@ export default function Home({ user, repos }: HomeProps) {
             </div>
           </SummaryCard>
         </div>
+
+        <figcaption>
+          <Image src={user.avatar} width={56} height={56} alt="" />
+          <div>
+            <strong>{user.name}</strong>
+            <span>{user.username}</span>
+          </div>
+        </figcaption>
       </GitHubSummary>
 
       <Experiences>
@@ -206,8 +228,12 @@ export default function Home({ user, repos }: HomeProps) {
                       <ArrowUpRight weight="bold" size={24} />
                     </strong>
                   </div>
-
-                  <p>{repo.language}</p>
+                  <Tags>
+                    {repo.languages &&
+                      repo.languages.map((language) => {
+                        return <p key={language}>{language}</p>
+                      })}
+                  </Tags>
                 </Card>
               </Link>
             )
@@ -216,13 +242,47 @@ export default function Home({ user, repos }: HomeProps) {
 
         <Button color="transparent">
           <Link
-            href={'https://github.com/omarcosallan?tab=repositories'}
+            href="https://github.com/omarcosallan?tab=repositories"
             target="_blank"
           >
             Mais projetos
           </Link>
         </Button>
       </Projects>
+
+      <CodeInsights>
+        <TitleSection>Code Insights: a jornada do meu GitHubBlog</TitleSection>
+
+        <div>
+          <div>
+            <div>
+              <span>Desenvolvimento Web</span>
+              <p>
+                Trabalhando com o ReactJS para desenvolver uma aplicação Web.
+              </p>
+            </div>
+            <div>
+              <span>Fundamentos</span>
+              <p>
+                Fundamentos da programação web com React, utilizando hooks,
+                contextos, estados e diversos outros conceitos.
+              </p>
+            </div>
+            <div>
+              <span>Consumo de API</span>
+              <p>Construindo um blog interativo integrado a API do GitHub.</p>
+            </div>
+          </div>
+          <Image src={blogImg} alt="" width={533} />
+        </div>
+
+        <Link href="https://github-blog-coral.vercel.app" target="_blank">
+          <Button color="transparent">
+            Visitar blog
+            <ArrowUpRight weight="bold" />
+          </Button>
+        </Link>
+      </CodeInsights>
     </HomeContainer>
   )
 }
@@ -243,6 +303,8 @@ export const getStaticProps: GetStaticProps = async () => {
   const user = {
     name: dataUser.name,
     username: dataUser.login,
+    avatar: dataUser.avatar_url,
+    company: dataUser.company,
     bio: dataUser.bio,
     followers: dataUser.followers,
     htmlUrl: dataUser.html_url,
@@ -253,17 +315,24 @@ export const getStaticProps: GetStaticProps = async () => {
     }).format(new Date(dataUser.created_at)),
   }
 
-  const repos = dataRepos.map((repo: RepositoryResponse) => {
+  const reposPromises = dataRepos.map(async (repo: RepositoryResponse) => {
+    const responseLanguages = await api.get(
+      `repos/omarcosallan/${repo.name}/languages`,
+    )
+    const languages = Object.keys(responseLanguages.data)
+
     return {
       id: repo.id,
       name: repo.name,
       createdAt: new Intl.DateTimeFormat('pt-BR', {
         year: 'numeric',
       }).format(new Date(repo.created_at)),
-      language: repo.language,
+      languages,
       link: repo.html_url,
     }
   })
+
+  const repos = await Promise.all(reposPromises)
 
   // const user = {
   //   name: 'Marcos Allan',
