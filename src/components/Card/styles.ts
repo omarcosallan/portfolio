@@ -1,44 +1,45 @@
 import { styled } from '@/styles'
 
 export const CardContainer = styled('div', {
-  position: 'relative',
   padding: '$12',
   color: '$slate400',
   borderRadius: '$sm',
-  overflow: 'hidden',
-
   fontSize: '$sm',
-  fontWeight: '500',
+  height: '100%',
+  fontWeight: 500,
   lineHeight: '160%',
-
   cursor: 'pointer',
 
-  '&::before': {
-    content: `''`,
-    display: 'block',
-    position: 'absolute',
-    top: '-3px',
-    left: '-3px',
-    width: 'calc(100% + 6px)',
-    height: 'calc(100% + 6px)',
-    borderRadius: 'inherit',
-    zIndex: '-1',
+  background: '$slate800',
 
-    background: '$slate800',
-    boxShadow: 'inset 0 1px 0 0 #ffffff0d',
-    opacity: 0,
-  },
-
-  '&:hover::before': {
-    opacity: 1,
+  '&:hover': {
+    background: '$slate700',
     transition: 'all .15s cubic-bezier(.4,0,.2,1)',
   },
 
   variants: {
-    filled: {
-      true: {
+    type: {
+      secondary: {
+        position: 'relative',
+        background: '$slate900',
+
         '&::before': {
-          opacity: 1,
+          content: `''`,
+          display: 'block',
+          position: 'absolute',
+          top: '-1px',
+          left: '-1px',
+          width: 'calc(100% + 2px)',
+          height: 'calc(100% + 2px)',
+          borderRadius: 'inherit',
+          zIndex: '-1',
+
+          background:
+            'linear-gradient(to bottom, rgba(148,163,184,.1), rgba(50,50,56,.01))',
+        },
+
+        '&:hover': {
+          background: '$slate900',
         },
       },
     },

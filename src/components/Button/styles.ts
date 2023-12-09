@@ -2,37 +2,43 @@ import { styled } from '@/styles'
 
 export const ButtonContainer = styled('button', {
   display: 'flex',
-  padding: '0.375rem 1rem',
+  padding: '$8 $12',
   alignItems: 'center',
   gap: '0.5rem',
-
+  width: 'fit-content',
+  height: '100%',
   borderRadius: '$sm',
-  backgroundColor: '$indigo600',
+  backgroundColor: '$violet600',
   color: '$slate50',
-  fontSize: '0.875rem',
-  lineHeight: '1.5rem',
-
+  fontSize: '$sm',
+  fontWeight: 700,
+  textTransform: 'uppercase',
+  textDecoration: 'none',
   border: '1px solid transparent',
 
+  transition: 'all .15s cubic-bezier(.4,0,.2,1)',
+
   '&:hover': {
-    backgroundColor: '$indigo500',
-    transition: 'all .15s cubic-bezier(.4,0,.2,1)',
+    backgroundColor: '$violet900',
   },
 
   svg: {
     color: '$slate50',
-    fontSize: '0.875rem',
   },
 
   variants: {
     color: {
-      transparent: {
-        backgroundColor: '$slate800',
-        boxShadow: '0 0 #0000, 0 0 #0000, inset 0 1px 0 0 rgba(148,163,184,.1)',
-        color: '$indigo600',
+      secondary: {
+        backgroundColor: 'transparent',
+        border: '1px solid $violet600',
+        color: '$violet600',
 
         svg: {
-          color: '$indigo600',
+          color: '$violet600',
+        },
+
+        '&:hover': {
+          backgroundColor: '$violet600',
         },
       },
     },

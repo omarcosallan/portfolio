@@ -10,7 +10,7 @@ export const IconWrapperContainer = styled('div', {
 
   marginBottom: '1.5rem',
 
-  backgroundColor: '$slate700',
+  backgroundColor: '$slate800',
   boxShadow: 'inset 0 1px 0 0 #ffffff0d',
 
   svg: {

@@ -1,19 +1,27 @@
 import { GetStaticProps } from 'next'
 import Button from '@/components/Button'
 import { api } from '@/lib/axios'
+
+import * as Tabs from '@radix-ui/react-tabs'
+
 import {
   Rocket,
   ArrowSquareOut,
   MedalMilitary,
   GraduationCap,
+  ArrowUpRight,
+  Certificate,
+  GithubLogo,
+  ClockCounterClockwise,
   Users,
   Globe,
-  ClockCounterClockwise,
-  ArrowUpRight,
+  ArrowRight,
 } from '@phosphor-icons/react'
 
 import {
+  AtTheTime,
   CodeInsights,
+  Content,
   Experiences,
   GitHubSummary,
   HomeContainer,
@@ -21,8 +29,8 @@ import {
   IntroducingMyself,
   Presentation,
   Projects,
-  SummaryCard,
-  Tags,
+  SummaryCards,
+  TabsList,
   TitleSection,
 } from '@/styles/pages/home'
 
@@ -30,10 +38,12 @@ import Link from 'next/link'
 import IconWrapper from '@/components/IconWrapper'
 import Card from '@/components/Card'
 
-import blogImg from '../assets/blog.png'
 import Image from 'next/image'
+import { Accordion } from '@/components/Accordion'
 
-interface GithubProfile {
+import blogImg from '../assets/cover.png'
+
+export interface GithubProfile {
   name: string
   username: string
   avatar: string
@@ -69,20 +79,16 @@ export default function Home({ user, repos }: HomeProps) {
     <HomeContainer>
       <Presentation>
         <Intro>
-          <h1>Bem vindo à Marcos Dev</h1>
-          {/* <p>{user.bio.substring(0, user.bio.indexOf(' #'))}</p> */}
+          <h1>Marcos Dev, transformando paixão em código</h1>
           <p>
-            Apaixonado por desenvolvimento web, sempre buscando as melhores
-            tecnologias para aprimorar minhas habilidades. Atualmente, estou
-            mergulhado no universo da programação enquanto curso Licenciatura em
-            Computação na UFERSA e consumo o conteúdo disponível na internet e
-            nos livros
+            Sou um apaixonado por desenvolvimento web, sempre buscando as
+            melhores tecnologias para aprimorar minhas habilidades.
           </p>
 
           <Link href={user.htmlUrl} target="_blank">
             <Button>
-              GitHub
-              <ArrowSquareOut weight="bold" />
+              Visite meu GitHub
+              <ArrowSquareOut weight="bold" size={20} />
             </Button>
           </Link>
         </Intro>
@@ -90,7 +96,7 @@ export default function Home({ user, repos }: HomeProps) {
         <IntroducingMyself>
           <Card>
             <IconWrapper>
-              <GraduationCap weight="bold" size={24} />
+              <GraduationCap weight="regular" size={24} />
             </IconWrapper>
 
             <h2>Início</h2>
@@ -106,7 +112,7 @@ export default function Home({ user, repos }: HomeProps) {
 
           <Card>
             <IconWrapper>
-              <MedalMilitary weight="bold" size={24} />
+              <MedalMilitary weight="regular" size={24} />
             </IconWrapper>
 
             <h2>Progresso</h2>
@@ -121,7 +127,7 @@ export default function Home({ user, repos }: HomeProps) {
 
           <Card>
             <IconWrapper>
-              <Rocket weight="bold" size={24} />
+              <Rocket weight="regular" size={24} />
             </IconWrapper>
 
             <h2>Rocketseat</h2>
@@ -137,90 +143,118 @@ export default function Home({ user, repos }: HomeProps) {
         </IntroducingMyself>
       </Presentation>
 
+      <AtTheTime>
+        <TitleSection>Foco no desenvolvimento Web</TitleSection>
+        <p>
+          Neste momento, estou totalmente dedicado ao aprimoramento das minhas
+          habilidades como desenvolvedor front-end. Ao mergulhar profundamente
+          em tecnologias amplamente reconhecidas globalmente, como React e
+          Next.js, meu objetivo é não apenas elevar minhas competências
+          técnicas, mas também contribuir para projetos inovadores e
+          impactantes.
+        </p>
+
+        <figure>
+          <Image src={user.avatar} alt="" width={56} height={56} />
+          <figcaption>
+            <strong>{user.name}</strong>
+            <span>{user.username}</span>
+          </figcaption>
+        </figure>
+      </AtTheTime>
+
+      <Experiences>
+        <TitleSection>Formação acadêmica</TitleSection>
+
+        <div>
+          <Tabs.Root defaultValue="tab1" orientation="vertical">
+            <TabsList>
+              <Tabs.Trigger value="tab1">
+                <GraduationCap weight="regular" size={52} />
+                <span>Início</span>
+              </Tabs.Trigger>
+              <Tabs.Trigger value="tab2">
+                <Certificate weight="regular" size={52} />
+                <span>Progresso</span>
+              </Tabs.Trigger>
+            </TabsList>
+            <Content value="tab1">
+              <div>
+                <strong>Primeiros passos</strong>
+                <p>
+                  Em 2021, dei início à minha jornada acadêmica ao ingressar na
+                  Licenciatura em Computação. Foi nesse período que tive meu
+                  primeiro contato significativo com o vasto mundo da
+                  programação. Ao longo desse caminho acadêmico, explorei
+                  diversas disciplinas, destacando-me especialmente em tópicos
+                  como Programação Orientada a Objetos (POO) e Java.
+                </p>
+              </div>
+            </Content>
+            <Content value="tab2">
+              <div>
+                <strong>Explorando meu potencial</strong>
+                <p>
+                  Meu interesse crescente pelo potencial criativo da programação
+                  me levou a participar ativamente do programa Oracle Next
+                  Education (ONE) no ano seguinte. Essa experiência, resultado
+                  da parceria entre a Oracle e a Alura, proporcionou uma visão
+                  prática e aplicada dos conhecimentos teóricos adquiridos em
+                  sala de aula, ampliando ainda mais minha perspectiva no
+                  universo da computação.
+                </p>
+              </div>
+            </Content>
+          </Tabs.Root>
+        </div>
+      </Experiences>
+
       <GitHubSummary>
         <TitleSection>Resumo do GitHub</TitleSection>
 
         <div>
-          <SummaryCard>
-            <IconWrapper>
-              <ClockCounterClockwise weight="bold" size={24} />
-            </IconWrapper>
-            <div>
-              <span>Usuário desde</span>
+          <GithubLogo weight="regular" />
+          <SummaryCards>
+            <Card type={'secondary'}>
+              <IconWrapper>
+                <ClockCounterClockwise size={24} weight="regular" />
+              </IconWrapper>
               <strong>{user.createdAt}</strong>
-            </div>
-          </SummaryCard>
+              <p>
+                Há mais de 1 ano na busca contínua de progresso na programação.
+              </p>
+            </Card>
 
-          <SummaryCard>
-            <IconWrapper>
-              <Users weight="bold" size={24} />
-            </IconWrapper>
-            <div>
-              <span>Seguidores</span>
-              <strong>{user.followers}</strong>
-            </div>
-          </SummaryCard>
+            <Card type={'secondary'}>
+              <IconWrapper>
+                <Users size={24} weight="regular" />
+              </IconWrapper>
+              <strong>{user.followers} seguidores</strong>
+              <p>Construindo uma comunidade de seguidores engajados.</p>
+            </Card>
 
-          <SummaryCard>
-            <IconWrapper>
-              <Globe weight="bold" size={24} />
-            </IconWrapper>
-            <div>
-              <span>Repositórios públicos</span>
-              <strong>{user.publicRepos}</strong>
-            </div>
-          </SummaryCard>
+            <Card type={'secondary'}>
+              <IconWrapper>
+                <Globe size={24} weight="regular" />
+              </IconWrapper>
+              <strong>{user.publicRepos} repositórios</strong>
+              <p>
+                Contribuições em diversos repositórios, explorando várias
+                tecnologias.
+              </p>
+            </Card>
+          </SummaryCards>
         </div>
-
-        <figcaption>
-          <Image src={user.avatar} width={56} height={56} alt="" />
-          <div>
-            <strong>{user.name}</strong>
-            <span>{user.username}</span>
-          </div>
-        </figcaption>
       </GitHubSummary>
 
-      <Experiences>
-        <TitleSection>Experiências</TitleSection>
-
-        <div>
-          <p>
-            Em 2021, dei início à minha jornada acadêmica ao ingressar na
-            Licenciatura em Computação. Foi nesse período que tive meu primeiro
-            contato significativo com o vasto mundo da programação. Ao longo
-            desse caminho acadêmico, explorei diversas disciplinas,
-            destacando-me especialmente em tópicos como Programação Orientada a
-            Objetos (POO) e Java.
-          </p>
-
-          <p>
-            Meu interesse crescente pelo potencial criativo da programação me
-            levou a participar ativamente do programa Oracle Next Education
-            (ONE) no ano seguinte. Essa experiência, resultado da parceria entre
-            a Oracle e a Alura, proporcionou uma visão prática e aplicada dos
-            conhecimentos teóricos adquiridos em sala de aula, ampliando ainda
-            mais minha perspectiva no universo da computação.
-          </p>
-
-          <p>
-            Atualmente, meu foco principal está em me desenvolver como um
-            dedicado desenvolvedor front-end. Ao explorar tecnologias amplamente
-            reconhecidas globalmente, como React e Next, busco não apenas
-            aprimorar minhas habilidades técnicas, mas também contribuir para
-            projetos inovadores e impactantes.
-          </p>
-        </div>
-      </Experiences>
-
       <Projects>
-        <TitleSection>Projetos</TitleSection>
+        <TitleSection>Meus projetos em destaque</TitleSection>
 
         <ul>
           {repos.map((repo) => {
             return (
               <Link key={repo.id} href={repo.link} target="_blank">
-                <Card>
+                <Card type="secondary">
                   <div>
                     <span>{repo.createdAt}</span>
                     <strong>
@@ -228,60 +262,36 @@ export default function Home({ user, repos }: HomeProps) {
                       <ArrowUpRight weight="bold" size={24} />
                     </strong>
                   </div>
-                  <Tags>
-                    {repo.languages &&
-                      repo.languages.map((language) => {
-                        return <p key={language}>{language}</p>
-                      })}
-                  </Tags>
                 </Card>
               </Link>
             )
           })}
         </ul>
 
-        <Button color="transparent">
-          <Link
-            href="https://github.com/omarcosallan?tab=repositories"
-            target="_blank"
-          >
+        <Link
+          href="https://github.com/omarcosallan?tab=repositories"
+          target="_blank"
+        >
+          <Button color="secondary">
             Mais projetos
-          </Link>
-        </Button>
+            <ArrowRight size={24} />
+          </Button>
+        </Link>
       </Projects>
 
       <CodeInsights>
-        <TitleSection>Code Insights: a jornada do meu GitHubBlog</TitleSection>
+        <Card type="secondary">
+          <TitleSection>
+            Code insights: a jornada do meu GitHubBlog
+          </TitleSection>
 
-        <div>
           <div>
-            <div>
-              <span>Desenvolvimento Web</span>
-              <p>
-                Trabalhando com o ReactJS para desenvolver uma aplicação Web.
-              </p>
-            </div>
-            <div>
-              <span>Fundamentos</span>
-              <p>
-                Fundamentos da programação web com React, utilizando hooks,
-                contextos, estados e diversos outros conceitos.
-              </p>
-            </div>
-            <div>
-              <span>Consumo de API</span>
-              <p>Construindo um blog interativo integrado a API do GitHub.</p>
-            </div>
+            <Accordion />
+            <Link href="https://github-blog-coral.vercel.app" target="_blank">
+              <Image src={blogImg} alt="" width={1600} />
+            </Link>
           </div>
-          <Image src={blogImg} alt="" width={533} />
-        </div>
-
-        <Link href="https://github-blog-coral.vercel.app" target="_blank">
-          <Button color="transparent">
-            Visitar blog
-            <ArrowUpRight weight="bold" />
-          </Button>
-        </Link>
+        </Card>
       </CodeInsights>
     </HomeContainer>
   )
@@ -316,79 +326,17 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 
   const reposPromises = dataRepos.map(async (repo: RepositoryResponse) => {
-    const responseLanguages = await api.get(
-      `repos/omarcosallan/${repo.name}/languages`,
-    )
-    const languages = Object.keys(responseLanguages.data)
-
     return {
       id: repo.id,
       name: repo.name,
       createdAt: new Intl.DateTimeFormat('pt-BR', {
         year: 'numeric',
       }).format(new Date(repo.created_at)),
-      languages,
       link: repo.html_url,
     }
   })
 
   const repos = await Promise.all(reposPromises)
-
-  // const user = {
-  //   name: 'Marcos Allan',
-  //   username: 'omarcosallan',
-  //   bio: 'Desenvolvedor em formação. Cursando Licenciatura em Computação pela UFERSA. Apaixonado por computação. #HTML #CSS #JavaScript #React',
-  //   followers: 20,
-  //   htmlUrl: '',
-  //   publicRepos: 30,
-  //   createdAt: new Intl.DateTimeFormat('pt-BR', {
-  //     month: 'long',
-  //     year: 'numeric',
-  //   }).format(new Date('2023-11-28T21:13:23Z')),
-  // }
-
-  // const repos = [
-  //   {
-  //     id: 724816159,
-  //     name: 'portfolio',
-  //     createdAt: new Intl.DateTimeFormat('pt-BR', {
-  //       month: 'long',
-  //       year: 'numeric',
-  //     }).format(new Date('2023-11-28T21:13:23Z')),
-  //     language: 'Typescript',
-  //     link: 'https://github.com/omarcosallan/portfolio',
-  //   },
-  //   {
-  //     id: 724221556,
-  //     name: 'ignite-shop',
-  //     createdAt: new Intl.DateTimeFormat('pt-BR', {
-  //       month: 'long',
-  //       year: 'numeric',
-  //     }).format(new Date('2023-11-28T21:13:23Z')),
-  //     language: 'Typescript',
-  //     link: 'https://github.com/omarcosallan/portfolio',
-  //   },
-  //   {
-  //     id: 724221556,
-  //     name: 'ignite-shop',
-  //     createdAt: new Intl.DateTimeFormat('pt-BR', {
-  //       month: 'long',
-  //       year: 'numeric',
-  //     }).format(new Date('2023-11-28T21:13:23Z')),
-  //     language: 'Typescript',
-  //     link: 'https://github.com/omarcosallan/portfolio',
-  //   },
-  //   {
-  //     id: 724221556,
-  //     name: 'ignite-shop',
-  //     createdAt: new Intl.DateTimeFormat('pt-BR', {
-  //       month: 'long',
-  //       year: 'numeric',
-  //     }).format(new Date('2023-11-28T21:13:23Z')),
-  //     language: 'Typescript',
-  //     link: 'https://github.com/omarcosallan/portfolio',
-  //   },
-  // ]
 
   return {
     props: {

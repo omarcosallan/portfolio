@@ -1,4 +1,4 @@
-import { createStitches } from '@stitches/react'
+import { createStitches, defaultThemeMap } from '@stitches/react'
 
 export const {
   styled,
@@ -10,8 +10,16 @@ export const {
   createTheme,
   config,
 } = createStitches({
+  themeMap: {
+    ...defaultThemeMap,
+    lineHeight: 'space',
+  },
   theme: {
     colors: {
+      white: '#FFFFFF',
+
+      gray800: 'rbg(32 32 36)',
+
       slate50: '#f8fafc',
       slate200: '#e2e8f0',
       slate300: '#cbd5e1',
@@ -20,12 +28,14 @@ export const {
       slate700: '#334155',
       slate800: '#1e293b',
       slate900: '#0f172a',
+      slate950: '#020617',
 
-      indigo400: '#818cf8',
-      indigo500: '#6366f1',
-      indigo600: '#4f46e5',
+      violet400: '#a78bfa',
+      violet500: '#8b5cf6',
+      violet600: '#7c3aed',
+      violet900: '#4c1d95',
 
-      cyan600: '#0891b2',
+      sky400: '#38bdf8',
     },
     fontSizes: {
       xs: '0.75rem',

@@ -1,4 +1,5 @@
 import { keyframes, styled } from '..'
+import * as Tabs from '@radix-ui/react-tabs'
 
 const slideTop = keyframes({
   '0%': {
@@ -39,19 +40,22 @@ export const Intro = styled('div', {
   animation: `${slideTop} 0.4s cubic-bezier(0.16, 1, 0.3, 1)`,
 
   h1: {
-    fontSize: '$5xl',
-    color: '$slate50',
+    fontSize: '$6xl',
+    color: '$white',
+    maxWidth: '70%',
   },
 
   p: {
     color: '$slate400',
-    fontSize: '$md',
+    fontSize: '$lg',
+    lineHeight: '$11',
     maxWidth: '70%',
+    marginTop: '$10',
   },
 
   a: {
     textDecoration: 'none',
-    marginTop: '$9',
+    marginTop: '$14',
   },
 })
 
@@ -67,12 +71,13 @@ export const IntroducingMyself = styled('ul', {
     fontSize: '$xl',
   },
 
-  p: { fontSize: '$sm', color: '$slate400' },
+  p: { fontSize: '$md', lineHeight: '$11', color: '$slate400' },
 })
 
 export const TitleSection = styled('h2', {
   fontSize: '$4xl',
-  marginBottom: '$12',
+  marginTop: '$7',
+  marginBottom: '$10',
 })
 
 export const SectionContainer = styled('div', {
@@ -85,75 +90,139 @@ export const SectionContainer = styled('div', {
 export const GitHubSummary = styled(SectionContainer, {
   '>div': {
     display: 'flex',
+    alignItems: 'center',
     gap: '$16',
+    width: '100%',
+
+    '>svg': {
+      color: '$violet400',
+      width: '100%',
+      height: '100%',
+      maxWidth: '250px',
+    },
+
+    '>div': {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3, minmax(0,1fr))',
+      gap: '$16',
+      width: '100%',
+    },
+  },
+})
+
+export const SummaryCards = styled('div', {
+  strong: {
+    fontSize: '$xl',
+    color: '$slate300',
+    lineHeight: '$10',
   },
 
-  figcaption: {
+  p: {
+    marginTop: '$5',
+    fontSize: '$md',
+    lineHeight: '$10',
+  },
+})
+
+export const Experiences = styled(SectionContainer, {
+  alignItems: 'flex-start',
+
+  '>div': {
     display: 'flex',
     alignItems: 'center',
+    gap: '$16',
+
+    button: {
+      '&:hover': {
+        transition: 'all .15s cubic-bezier(.4,0,.2,1)',
+      },
+    },
+  },
+})
+
+export const TabsList = styled(Tabs.List, {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '$16',
+  padding: 0,
+  paddingBottom: '$10',
+
+  button: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     gap: '$7',
-    marginTop: '$3',
+    backgroundColor: 'transparent',
+    color: '$slate50',
+    border: 'none',
+
+    span: {
+      fontWeight: 700,
+    },
+
+    '&[data-state="active"]': {
+      color: '$violet400',
+    },
+  },
+})
+
+export const Content = styled(Tabs.Content, {
+  borderTop: '1px solid rgba(148,163,184,.1)',
+
+  strong: {
+    fontSize: '$xl',
+  },
+
+  p: {
+    fontSize: '$md',
+    lineHeight: '160%',
+    color: '$slate300',
+    marginTop: '$4',
+  },
+
+  div: {
+    maxWidth: '60%',
+    paddingTop: '$10',
+  },
+})
+
+export const AtTheTime = styled(SectionContainer, {
+  h2: {
+    fontSize: '$5xl',
+  },
+
+  p: {
+    textAlign: 'center',
+    color: '$slate400',
+    fontSize: '$lg',
+    lineHeight: '$11',
+    maxWidth: '70%',
+  },
+
+  figure: {
+    display: 'flex',
+    gap: '$7',
+    marginTop: '$10',
 
     img: {
       borderRadius: '99999px',
     },
 
-    div: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'flex-start',
-      justifyContent: 'space-between',
-
-      strong: {
-        fontSize: '$md',
-        color: '$slate50',
-      },
-
-      span: {
-        fontSize: '$sm',
-        color: '$slate400',
-      },
+    strong: {
+      color: '$slate50',
     },
-  },
-})
 
-export const SummaryCard = styled('div', {
-  width: '100%',
-  minWidth: '240px',
-  padding: '$12',
-  borderRadius: '$sm',
-  position: 'relative',
-
-  background: 'linear-gradient(0deg, rgba(255,255,255, 0), $slate800 100%)',
-  boxShadow: 'inset 0 1px 0 0 #ffffff0d',
-
-  span: {
-    display: 'block',
-    fontSize: '$sm',
-    color: '$slate400',
-    marginBottom: '$3',
+    span: { color: '$slate400' },
   },
 
-  strong: {
-    fontSize: '$4xl',
-    color: '$slate50',
-  },
-})
+  figcaption: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
 
-export const Experiences = styled(SectionContainer, {
-  'p + p': {
-    marginTop: '$6',
-  },
-
-  color: '$slate400',
-
-  '>div': {
-    backgroundColor: '$slate800',
-    padding: '$12',
-    borderRadius: '$sm',
-    border: '1px solid rgba(148,163,184,.1)',
-    fontSize: '$sm',
-    lineHeight: '160%',
+    strong: {
+      display: 'block',
+    },
   },
 })
 
@@ -161,141 +230,87 @@ export const Projects = styled(SectionContainer, {
   ul: {
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
-    gap: '$12',
+    gap: '$7',
+    rowGap: '$16',
     width: '100%',
   },
 
   a: {
-    '>div': {
-      height: '100%',
+    textDecoration: 'none',
 
+    '>div': {
+      cursor: 'pointer',
+      height: '100%',
       display: 'flex',
+      gap: '$12',
       flexDirection: 'column',
       justifyContent: 'space-between',
-      border: '1px solid rgba(148,163,184,.1)',
-    },
-
-    textDecoration: 'none',
-    color: '$slate50',
-
-    '&:hover': {
-      '>div': {
-        borderColor: 'transparent',
-      },
-
-      strong: {
-        color: '$indigo400',
-
-        svg: {
-          color: '$indigo400',
-          transform: 'translate(0.25rem, -0.25rem)',
-          transition: 'all .15s cubic-bezier(.4,0,.2,1)',
-        },
-      },
     },
   },
 
   span: {
-    fontSize: '$xs',
+    fontSize: '$sm',
     fontWeight: 700,
     lineHeight: '1.25rem',
-    color: '$indigo400',
+    color: '$violet400',
   },
 
   strong: {
     display: 'flex',
     alignItems: 'center',
     gap: '$3',
-    fontSize: '$lg',
+    fontSize: '$xl',
     color: '$slate50',
   },
 
   button: {
     marginTop: '$12',
-  },
-})
-
-export const Tags = styled('div', {
-  display: 'flex',
-  gap: '$3',
-  rowGap: '$1',
-  flexWrap: 'wrap',
-  marginTop: '$8',
-
-  p: {
-    borderRadius: '99999px',
-    backgroundColor: '$indigo500',
     color: '$slate50',
-    fontWeight: 700,
-    width: 'max-content',
-    padding: '$1 $4',
-    textAlign: 'center',
-    fontSize: '$xs',
+    svg: { color: '$slate50' },
 
-    boxShadow: 'inset 0 1px 0 0 #ffffff0d',
+    '&:hover': {
+      svg: {
+        transform: 'translateX(0.2rem)',
+        transition: 'all .15s cubic-bezier(.4,0,.2,1)',
+      },
+    },
   },
 })
 
 export const CodeInsights = styled(SectionContainer, {
-  padding: '$12',
-  borderRadius: '$sm',
-  border: '1px solid rgba(148,163,184,.1)',
+  h2: {
+    textAlign: 'center',
+    marginBottom: '$16',
+  },
 
-  '>div': {
+  '>div >div': {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     gap: '$16',
+    width: '100%',
 
-    '>div': {
-      maxWidth: '414px',
+    a: {
+      width: '100%',
+      height: '100%',
+      borderRadius: '$sm',
+      overflow: 'hidden',
 
-      div: {
-        marginTop: '$10',
-        paddingBottom: '$10',
-        borderBottom: '1px solid rgba(148,163,184,.1)',
-      },
-
-      'div:last-child': {
-        borderBottomColor: 'transparent',
-      },
+      border: '1px solid rgba(148, 163, 184, .1)',
     },
-  },
-
-  span: {
-    fontSize: '$xl',
-    fontWeight: 700,
-  },
-
-  p: {
-    color: '$slate400',
-    marginTop: '$3',
-    fontSize: '$sm',
   },
 
   img: {
+    width: '100%',
+    height: '100%',
     objectFit: 'cover',
-    borderRadius: '$sm',
-    border: '1px solid rgba(148,163,184,.1)',
-    boxShadow: 'inset 0 1px 0 0 #ffffff0d',
-  },
-
-  a: {
-    textDecoration: 'none',
-    color: '$slate50',
-    button: {
-      color: '$slate50',
-
-      svg: {
-        color: '$slate50',
-      },
-    },
+    transition: 'all 0.6s cubic-bezier(.165,.84,.44,1)',
+    cursor: 'pointer',
+    transform: 'scale(1.05)',
 
     '&:hover': {
-      svg: {
-        transform: 'translate(0.25rem, -0.25rem)',
-        transition: 'all .15s cubic-bezier(.4,0,.2,1)',
-      },
+      opacity: 0.9,
+      transform: 'scale(1.15)',
     },
   },
 })
