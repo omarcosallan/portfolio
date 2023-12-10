@@ -12,7 +12,7 @@ export function Accordion() {
     <AccordionRoot type="single" defaultValue="item-1" collapsible>
       <AccordionItem value="item-1">
         <AccordionTrigger>
-          <span>Desenvolvimento Web</span>
+          <span>Desenvolvimento WEB</span>
           <CaretDown />
         </AccordionTrigger>
 

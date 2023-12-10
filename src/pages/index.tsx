@@ -7,7 +7,6 @@ import * as Tabs from '@radix-ui/react-tabs'
 import {
   Rocket,
   ArrowSquareOut,
-  MedalMilitary,
   GraduationCap,
   ArrowUpRight,
   Certificate,
@@ -16,6 +15,7 @@ import {
   Users,
   Globe,
   ArrowRight,
+  ArrowDown,
 } from '@phosphor-icons/react'
 
 import {
@@ -26,7 +26,6 @@ import {
   GitHubSummary,
   HomeContainer,
   Intro,
-  IntroducingMyself,
   Presentation,
   Projects,
   SummaryCards,
@@ -91,56 +90,9 @@ export default function Home({ user, repos }: HomeProps) {
               <ArrowSquareOut weight="bold" size={20} />
             </Button>
           </Link>
+
+          <ArrowDown weight="bold" size={20} />
         </Intro>
-
-        <IntroducingMyself>
-          <Card>
-            <IconWrapper>
-              <GraduationCap weight="regular" size={24} />
-            </IconWrapper>
-
-            <h2>Início</h2>
-
-            <p>
-              Em 2021, iniciei minha jornada acadêmica na UFERSA, onde me
-              matriculei na Licenciatura em Computação. Durante esse período,
-              explorei diversas disciplinas na área da programação,
-              destacando-me em tópicos como Programação Orientada a Objetos
-              (POO) e Java.
-            </p>
-          </Card>
-
-          <Card>
-            <IconWrapper>
-              <MedalMilitary weight="regular" size={24} />
-            </IconWrapper>
-
-            <h2>Progresso</h2>
-
-            <p>
-              No ano seguinte, participei do programa Oracle Next Education
-              (ONE), uma colaboração entre a Oracle e a Alura. Essa experiência
-              enriqueceu meu conhecimento e me proporcionou uma visão mais
-              prática e aplicada dos conceitos aprendidos em sala de aula.
-            </p>
-          </Card>
-
-          <Card>
-            <IconWrapper>
-              <Rocket weight="regular" size={24} />
-            </IconWrapper>
-
-            <h2>Rocketseat</h2>
-
-            <p>
-              Minha jornada na programação ganhou novos horizontes quando
-              descobri a Rocketseat. Inicialmente focado no Back-end, meu
-              entusiasmo rapidamente se voltou para o universo fascinante do
-              Front-end após consumir uma quantidade significativa de conteúdo
-              fornecido pela plataforma.
-            </p>
-          </Card>
-        </IntroducingMyself>
       </Presentation>
 
       <AtTheTime>
@@ -177,6 +129,10 @@ export default function Home({ user, repos }: HomeProps) {
                 <Certificate weight="regular" size={52} />
                 <span>Progresso</span>
               </Tabs.Trigger>
+              <Tabs.Trigger value="tab3">
+                <Rocket weight="regular" size={52} />
+                <span>Rocketseat</span>
+              </Tabs.Trigger>
             </TabsList>
             <Content value="tab1">
               <div>
@@ -205,6 +161,18 @@ export default function Home({ user, repos }: HomeProps) {
                 </p>
               </div>
             </Content>
+            <Content value="tab3">
+              <div>
+                <strong>Rocketseat</strong>
+                <p>
+                  Minha jornada na programação ganhou novos horizontes quando
+                  descobri a Rocketseat. Inicialmente focado no Back-end, meu
+                  entusiasmo rapidamente se voltou para o universo fascinante do
+                  Front-end após consumir uma quantidade significativa de
+                  conteúdo fornecido pela plataforma.
+                </p>
+              </div>
+            </Content>
           </Tabs.Root>
         </div>
       </Experiences>
@@ -215,7 +183,7 @@ export default function Home({ user, repos }: HomeProps) {
         <div>
           <GithubLogo weight="regular" />
           <SummaryCards>
-            <Card type={'secondary'}>
+            <Card type="secondary">
               <IconWrapper>
                 <ClockCounterClockwise size={24} weight="regular" />
               </IconWrapper>

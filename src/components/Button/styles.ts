@@ -31,10 +31,10 @@ export const ButtonContainer = styled('button', {
       secondary: {
         backgroundColor: 'transparent',
         border: '1px solid $violet600',
-        color: '$violet600',
+        color: '$slate50',
 
         svg: {
-          color: '$violet600',
+          color: '$slate50',
         },
 
         '&:hover': {

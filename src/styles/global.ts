@@ -1,5 +1,7 @@
 import { globalCss } from '.'
 
+import bgGradient from '../assets/gradient.jpg'
+
 export const globalStyles = globalCss({
   '*': {
     margin: 0,
@@ -8,21 +10,32 @@ export const globalStyles = globalCss({
   },
 
   body: {
-    backgroundColor: '$slate900',
+    background: '$slate900',
+    width: '100%',
+    minHeight: '100vh',
     color: '$slate50',
     '-webkit-font-smoothing': 'antialiased',
-    minHeight: '100vh',
     position: 'relative',
 
     '&::before': {
       content: '""',
       position: 'absolute',
       width: '100%',
-      height: '100%',
-      background:
-        'radial-gradient(1500px at 35% 150px, $violet600, rgba(255, 255, 255, 0) 25%), radial-gradient(1500px at 85% 15%, $violet600, rgba(255, 255, 255, 0) 25%)',
-      pointerEvents: 'none',
-      opacity: '.2',
+      minHeight: '100vh',
+
+      backgroundImage: `
+        radial-gradient(
+          circle at center,
+          rgba(0, 0, 0, 0) 0%,
+          $slate900 70%
+        ),
+        url(${bgGradient.src})
+      `,
+      backgroundSize: 'cover',
+      borderBottom: '1px solid rgba(148, 163, 184, .1)',
+      zIndex: -1,
+      backgroundPositionX: 'center',
+      backgroundPositionY: 'center',
     },
   },
 

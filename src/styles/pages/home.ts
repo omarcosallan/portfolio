@@ -19,6 +19,15 @@ const slideBottom = keyframes({
   },
 })
 
+const slideLeft = keyframes({
+  '0%': {
+    transform: 'translateX(-100%)',
+  },
+  '100%': {
+    transform: 'translateX(0%)',
+  },
+})
+
 export const HomeContainer = styled('main', {})
 
 export const Presentation = styled('div', {
@@ -26,15 +35,44 @@ export const Presentation = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   gap: '$16',
-  justifyContent: 'space-evenly',
+  justifyContent: 'space-around',
   overflow: 'hidden',
 })
 
-export const Intro = styled('div', {
+const jumpAnimation = keyframes({
+  '0%, 20%, 50%, 80%, 100%': {
+    transform: 'translateY(0)',
+  },
+  '40%': {
+    transform: 'translateY(-10px)',
+  },
+  '60%': {
+    transform: 'translateY(-5px)',
+  },
+})
+
+export const SectionContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  justifyContent: 'center',
+  marginTop: '7rem',
+
+  maxWidth: '1160px',
+  marginInline: 'auto',
+})
+
+export const TitleSection = styled('h2', {
+  textAlign: 'left',
+  fontSize: '$4xl',
+  marginTop: '$7',
+  marginBottom: '$16',
+})
+
+export const Intro = styled(SectionContainer, {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'flex-start',
   textAlign: 'center',
 
   animation: `${slideTop} 0.4s cubic-bezier(0.16, 1, 0.3, 1)`,
@@ -57,6 +95,11 @@ export const Intro = styled('div', {
     textDecoration: 'none',
     marginTop: '$14',
   },
+
+  '>svg': {
+    color: '$slate300',
+    marginTop: '$16',
+  },
 })
 
 export const IntroducingMyself = styled('ul', {
@@ -72,19 +115,6 @@ export const IntroducingMyself = styled('ul', {
   },
 
   p: { fontSize: '$md', lineHeight: '$11', color: '$slate400' },
-})
-
-export const TitleSection = styled('h2', {
-  fontSize: '$4xl',
-  marginTop: '$7',
-  marginBottom: '$10',
-})
-
-export const SectionContainer = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  marginTop: '7rem',
 })
 
 export const GitHubSummary = styled(SectionContainer, {
@@ -111,6 +141,10 @@ export const GitHubSummary = styled(SectionContainer, {
 })
 
 export const SummaryCards = styled('div', {
+  '>div': {
+    cursor: 'initial',
+  },
+
   strong: {
     fontSize: '$xl',
     color: '$slate300',
@@ -129,8 +163,8 @@ export const Experiences = styled(SectionContainer, {
 
   '>div': {
     display: 'flex',
-    alignItems: 'center',
     gap: '$16',
+    overflow: 'hidden',
 
     button: {
       '&:hover': {
@@ -153,11 +187,17 @@ export const TabsList = styled(Tabs.List, {
     alignItems: 'center',
     gap: '$7',
     backgroundColor: 'transparent',
-    color: '$slate50',
+    color: '$slate500',
     border: 'none',
+
+    transition: 'all .15s cubic-bezier(.4,0,.2,1)',
 
     span: {
       fontWeight: 700,
+    },
+
+    '&:hover': {
+      color: '$slate400',
     },
 
     '&[data-state="active"]': {
@@ -167,6 +207,7 @@ export const TabsList = styled(Tabs.List, {
 })
 
 export const Content = styled(Tabs.Content, {
+  minHeight: '200px',
   borderTop: '1px solid rgba(148,163,184,.1)',
 
   strong: {
@@ -183,6 +224,8 @@ export const Content = styled(Tabs.Content, {
   div: {
     maxWidth: '60%',
     paddingTop: '$10',
+
+    animation: `${slideLeft} .4s cubic-bezier(0.16, 1, 0.3, 1)`,
   },
 })
 
@@ -245,6 +288,13 @@ export const Projects = styled(SectionContainer, {
       gap: '$12',
       flexDirection: 'column',
       justifyContent: 'space-between',
+    },
+
+    '&:hover': {
+      svg: {
+        transform: 'translate(0.25rem, -0.25rem)',
+        transition: 'all .15s cubic-bezier(.4,0,.2,1)',
+      },
     },
   },
 
