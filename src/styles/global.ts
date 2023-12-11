@@ -27,7 +27,7 @@ export const globalStyles = globalCss({
         radial-gradient(
           circle at center,
           rgba(0, 0, 0, 0) 0%,
-          $slate900 70%
+          $slate900 100%
         ),
         url(${bgGradient.src})
       `,
@@ -40,7 +40,7 @@ export const globalStyles = globalCss({
   },
 
   'body, input, textarea, button': {
-    fontFamily: 'Inter',
+    fontFamily: '$Inter',
     fontWeight: 400,
   },
 

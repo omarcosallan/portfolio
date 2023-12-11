@@ -6,6 +6,5 @@ export const Container = styled('div', {
   justifyContent: 'flex-start',
   minHeight: '100vh',
   width: '100%',
-
   padding: '$10 0 $16 0',
 })

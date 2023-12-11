@@ -1,5 +1,13 @@
 import { createStitches, defaultThemeMap } from '@stitches/react'
 
+import { Inter } from 'next/font/google'
+
+const inter = Inter({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+})
+
 export const {
   styled,
   css,
@@ -15,6 +23,7 @@ export const {
     lineHeight: 'space',
   },
   theme: {
+    fonts: { Inter: `${inter.style.fontFamily}, sans-serif` },
     colors: {
       white: '#FFFFFF',
 

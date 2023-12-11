@@ -1,6 +1,8 @@
 import { keyframes, styled } from '..'
 import * as Tabs from '@radix-ui/react-tabs'
 
+import bgGradient from '../../assets/gradient.jpg'
+
 const slideTop = keyframes({
   '0%': {
     transform: 'translateY(-100%)',
@@ -37,18 +39,6 @@ export const Presentation = styled('div', {
   gap: '$16',
   justifyContent: 'space-around',
   overflow: 'hidden',
-})
-
-const jumpAnimation = keyframes({
-  '0%, 20%, 50%, 80%, 100%': {
-    transform: 'translateY(0)',
-  },
-  '40%': {
-    transform: 'translateY(-10px)',
-  },
-  '60%': {
-    transform: 'translateY(-5px)',
-  },
 })
 
 export const SectionContainer = styled('div', {
@@ -361,6 +351,104 @@ export const CodeInsights = styled(SectionContainer, {
     '&:hover': {
       opacity: 0.9,
       transform: 'scale(1.15)',
+    },
+  },
+})
+
+export const Timeline = styled(SectionContainer, {
+  maxWidth: '100vw',
+
+  h2: {
+    fontSize: '$5xl',
+  },
+
+  p: {
+    fontSize: '$lg',
+    color: '$slate400',
+  },
+
+  header: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '7rem 0',
+
+    backgroundImage: `
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      $slate900 100%
+    ),
+    url(${bgGradient.src})
+  `,
+    backgroundSize: 'cover',
+    borderTop: '1px solid rgba(148, 163, 184, .1)',
+    backgroundPositionX: 'center',
+    backgroundPositionY: 'center',
+
+    '>h2, >p': {
+      maxWidth: '45%',
+      textAlign: 'center',
+    },
+
+    '>svg': {
+      color: '$slate300',
+      marginTop: '$7',
+    },
+  },
+})
+
+export const Line = styled('div', {
+  width: '1px',
+  height: '100%',
+  backgroundColor: '$slate700',
+  position: 'absolute',
+})
+
+export const TimelineContent = styled('div', {
+  display: 'flex',
+  gap: '$7',
+  alignItems: 'flex-start',
+  position: 'relative',
+  width: '100%',
+  maxWidth: '1160px',
+  marginInline: 'auto',
+
+  '>div': {
+    '>article': {
+      marginLeft: '$16',
+      paddingBottom: '$12',
+      borderRadius: '$sm',
+      position: 'relative',
+
+      svg: {
+        position: 'absolute',
+        top: 0,
+        left: 'calc(-$16 - .5rem)',
+
+        color: '$slate500',
+        backgroundColor: '$slate900',
+      },
+
+      strong: {
+        fontSize: '$md',
+        color: '$slate200',
+        display: 'block',
+      },
+
+      span: {
+        color: '$slate500',
+        fontSize: '$sm',
+        fontWeight: 700,
+      },
+
+      p: {
+        fontSize: '$md',
+        color: '$slate500',
+        marginTop: '$4',
+        marginBottom: '$7',
+      },
     },
   },
 })

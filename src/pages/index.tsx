@@ -16,6 +16,7 @@ import {
   Globe,
   ArrowRight,
   ArrowDown,
+  Circle,
 } from '@phosphor-icons/react'
 
 import {
@@ -26,10 +27,13 @@ import {
   GitHubSummary,
   HomeContainer,
   Intro,
+  Line,
   Presentation,
   Projects,
   SummaryCards,
   TabsList,
+  Timeline,
+  TimelineContent,
   TitleSection,
 } from '@/styles/pages/home'
 
@@ -261,6 +265,83 @@ export default function Home({ user, repos }: HomeProps) {
           </div>
         </Card>
       </CodeInsights>
+
+      <Timeline>
+        <header>
+          <TitleSection>
+            Eventos e cursos que participei ao longo da minha carreira em
+            programação
+          </TitleSection>
+          <p>
+            Explore algumas etapas da minha trajetória e o que conquistei até
+            agora com a programação.
+          </p>
+          <ArrowDown weight="bold" size={20} />
+        </header>
+
+        <TimelineContent>
+          <Line />
+          <div>
+            <article>
+              <strong>dsmeta</strong>
+              <span>Professor Nélio Alves</span>
+              <p>
+                O projeto dsmeta foi desenvolvido durante um evento conduzido
+                pelo professor Nélio Alves. Neste projeto, criei um site de
+                gerenciamento com backend e frontend próprios. Foi meu primeiro
+                contato com ReactJS e Typescript, com o backend sendo
+                desenvolvido em Java.
+              </p>
+              <Circle size={16} />
+            </article>
+
+            <article>
+              <strong>Imersão Java</strong>
+              <span>Alura</span>
+              <p>
+                Ao iniciar o curso de Licenciatura em Computação e após meu
+                primeiro contato com a linguagem Java, participei da Imersão
+                Java, um período de 5 dias dedicados ao desenvolvimento de um
+                projeto em Java.
+              </p>
+              <Circle size={16} />
+            </article>
+
+            <article>
+              <strong>NLW #10</strong>
+              <span>Rocketseat</span>
+              <p>
+                A NLW é um evento exclusivo e gratuito promovido pela Rocketseat
+                para ensino de tecnologias web. No momento em que migrava minha
+                carreira para o desenvolvimento web, o evento possibilitou
+                aprimorar conhecimentos em HTML, CSS, JavaScript, Git e GitHub.
+              </p>
+              <Circle size={16} />
+            </article>
+
+            <article>
+              <strong>chess-system-java</strong>
+              <span>Professor Nélio Alves</span>
+              <p>
+                Desenvolvi um jogo de xadrez em Java como parte do curso de Java
+                e POO do professor Nélio Alves.
+              </p>
+              <Circle size={16} />
+            </article>
+
+            <article>
+              <strong>Oracle Next Education</strong>
+              <span>Alura + Oracle</span>
+              <p>
+                No início do curso de Licenciatura em Computação, participei da
+                Imersão Java, dedicando 5 dias ao desenvolvimento de um projeto
+                em Java.
+              </p>
+              <Circle size={16} />
+            </article>
+          </div>
+        </TimelineContent>
+      </Timeline>
     </HomeContainer>
   )
 }
