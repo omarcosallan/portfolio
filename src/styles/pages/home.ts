@@ -29,13 +29,19 @@ export const SectionContainer = styled('div', {
   marginTop: '7rem',
   maxWidth: '1160px',
   marginInline: 'auto',
+  paddingInline: '$7',
 })
 
 export const TitleSection = styled('h2', {
-  textAlign: 'left',
+  textAlign: 'center',
   fontSize: '$4xl',
   marginTop: '$7',
   marginBottom: '$16',
+  lineHeight: '$16',
+
+  '@media (min-width: 768px)': {
+    textAlign: 'left',
+  },
 })
 
 export const DescriptionSection = styled('p', {
@@ -48,7 +54,21 @@ export const DescriptionSection = styled('p', {
 export const Intro = styled(SectionContainer, {
   justifyContent: 'flex-start',
   textAlign: 'center',
-  h1: { fontSize: '$6xl', color: '$white', maxWidth: '70%' },
+  paddingInline: 0,
+
+  h1: {
+    fontSize: '$2xl',
+    color: '$white',
+    maxWidth: '100%',
+    marginInline: '$7',
+
+    '@media (min-width: 640px)': {
+      fontSize: '$6xl',
+      maxWidth: '70%',
+      marginInline: 0,
+    },
+  },
+
   p: {
     color: '$slate400',
     fontSize: '$lg',
@@ -56,7 +76,9 @@ export const Intro = styled(SectionContainer, {
     maxWidth: '70%',
     marginTop: '$10',
   },
+
   a: { textDecoration: 'none', marginTop: '$14' },
+
   '>svg': { color: '$slate300', marginTop: '$16' },
 })
 
@@ -66,11 +88,16 @@ export const GitHubSummary = styled(SectionContainer, {
     alignItems: 'center',
     gap: '$16',
     width: '100%',
+
     '>div': {
       display: 'grid',
-      gridTemplateColumns: 'repeat(3, minmax(0,1fr))',
+      gridTemplateColumns: 'repeat(1, 1fr)',
       gap: '$16',
       width: '100%',
+
+      '@media (min-width: 640px)': {
+        gridTemplateColumns: 'repeat(3, minmax(0,1fr))',
+      },
     },
   },
 })
@@ -93,6 +120,7 @@ export const TabsList = styled(Tabs.List, {
   gap: '$16',
   padding: 0,
   paddingBottom: '$10',
+
   button: {
     display: 'flex',
     flexDirection: 'column',
@@ -101,11 +129,14 @@ export const TabsList = styled(Tabs.List, {
     backgroundColor: 'transparent',
     color: '$slate500',
     border: 'none',
+
     span: { fontWeight: 700 },
+
     '&:hover': {
       color: '$slate400',
       transition: 'all .15s cubic-bezier(.4,0,.2,1)',
     },
+
     '&[data-state="active"]': {
       color: '$violet400',
     },
@@ -115,23 +146,37 @@ export const TabsList = styled(Tabs.List, {
 export const Content = styled(Tabs.Content, {
   minHeight: '200px',
   borderTop: '1px solid rgba(148,163,184,.1)',
+
   strong: { fontSize: '$xl' },
+
   div: {
-    maxWidth: '60%',
+    maxWidth: '100%',
     paddingTop: '$10',
     animation: `${slide('X')} .4s cubic-bezier(0.16, 1, 0.3, 1)`,
+
+    '@media (min-width: 640px)': {
+      maxWidth: '60%',
+    },
   },
 })
 
 export const AtTheTime = styled(SectionContainer, {
-  h2: { fontSize: '$5xl' },
+  h2: {
+    fontSize: '$4xl',
+
+    '@media (min-width: 640px)': {
+      fontSize: '$5xl',
+    },
+  },
+
   p: {
     textAlign: 'center',
     color: '$slate400',
-    fontSize: '$lg',
+    fontSize: '$md',
     lineHeight: '$11',
-    maxWidth: '70%',
+    maxWidth: '100%',
   },
+
   figure: {
     display: 'flex',
     gap: '$7',
@@ -140,22 +185,39 @@ export const AtTheTime = styled(SectionContainer, {
     strong: { color: '$slate50' },
     span: { color: '$slate400' },
   },
+
   figcaption: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-evenly',
     strong: { display: 'block' },
   },
+
+  '@media (min-width: 768px)': {
+    p: {
+      fontSize: '$lg',
+      maxWidth: '70%',
+    },
+  },
 })
 
 export const Projects = styled(SectionContainer, {
   ul: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
+    gridTemplateColumns: 'repeat(1, 1fr)',
     gap: '$7',
     rowGap: '$16',
     width: '100%',
+
+    '@media (min-width: 640px)': {
+      gridTemplateColumns: 'repeat(2, 1fr)',
+    },
+
+    '@media (min-width: 768px)': {
+      gridTemplateColumns: 'repeat(4, 1fr)',
+    },
   },
+
   a: {
     textDecoration: 'none',
     '>div': {
@@ -166,6 +228,7 @@ export const Projects = styled(SectionContainer, {
       flexDirection: 'column',
       justifyContent: 'space-between',
     },
+
     '&:hover': {
       svg: {
         transform: 'translate(0.25rem, -0.25rem)',
@@ -173,13 +236,16 @@ export const Projects = styled(SectionContainer, {
       },
     },
   },
+
   '>a': { marginTop: '$12' },
+
   span: {
     fontSize: '$sm',
     fontWeight: 700,
     lineHeight: '1.25rem',
     color: '$violet400',
   },
+
   strong: {
     display: 'flex',
     alignItems: 'center',
@@ -187,9 +253,11 @@ export const Projects = styled(SectionContainer, {
     fontSize: '$xl',
     color: '$slate50',
   },
+
   button: {
     color: '$slate50',
     svg: { color: '$slate50' },
+
     '&:hover': {
       svg: {
         transform: 'translateX(0.2rem)',
@@ -200,30 +268,60 @@ export const Projects = styled(SectionContainer, {
 })
 
 export const Languages = styled(SectionContainer, {
-  flexDirection: 'row',
+  flexDirection: 'column',
   gap: '$16',
   width: '100%',
+
   h2: { marginBottom: '$12' },
+
   '>div >div': {
     marginTop: '$16',
     display: 'flex',
     gap: '$7',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    rowGap: '$1',
+
+    p: {
+      maxWidth: '100%',
+    },
+
+    '@media (min-width: 768px)': {
+      justifyContent: 'flex-start',
+    },
   },
+
   '>img': {
     objectFit: 'cover',
     border: '1px solid rgba(148, 163, 184, .1)',
     borderRadius: '$sm',
+    display: 'none',
+
+    '@media (min-width: 768px)': {
+      display: 'initial',
+    },
+  },
+
+  '@media (min-width: 768px)': {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 })
 
 export const CodeInsights = styled(SectionContainer, {
-  h2: { textAlign: 'center', marginBottom: '$16' },
+  h2: {
+    textAlign: 'center',
+    lineHeight: '$16',
+  },
+
   '>div >div': {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    flexDirection: 'column',
     gap: '$16',
     width: '100%',
+
     a: {
       width: '100%',
       height: '100%',
@@ -231,7 +329,12 @@ export const CodeInsights = styled(SectionContainer, {
       overflow: 'hidden',
       border: '1px solid rgba(148, 163, 184, .1)',
     },
+
+    '@media (min-width: 640px)': {
+      flexDirection: 'row',
+    },
   },
+
   img: {
     width: '100%',
     height: '100%',
@@ -239,6 +342,7 @@ export const CodeInsights = styled(SectionContainer, {
     transition: 'all 0.6s cubic-bezier(.165,.84,.44,1)',
     cursor: 'pointer',
     transform: 'scale(1.05)',
+
     '&:hover': {
       opacity: 0.9,
       transform: 'scale(1.15)',
@@ -248,8 +352,18 @@ export const CodeInsights = styled(SectionContainer, {
 
 export const Timeline = styled(SectionContainer, {
   maxWidth: '100vw',
-  h2: { fontSize: '$5xl' },
+  paddingInline: 0,
+
+  h2: {
+    fontSize: '$4xl',
+
+    '@media (min-width: 640px)': {
+      fontSize: '$5xl',
+    },
+  },
+
   p: { fontSize: '$lg', color: '$slate400' },
+
   header: {
     width: '100%',
     display: 'flex',
@@ -268,7 +382,18 @@ export const Timeline = styled(SectionContainer, {
     borderTop: '1px solid rgba(148, 163, 184, .1)',
     backgroundPositionX: 'center',
     backgroundPositionY: 'center',
-    '>h2, >p': { maxWidth: '45%', textAlign: 'center' },
+
+    '>h2, >p': {
+      maxWidth: '100%',
+      textAlign: 'center',
+      paddingInline: '$7',
+
+      '@media (min-width: 640px)': {
+        maxWidth: '45%',
+        paddingInline: 0,
+      },
+    },
+
     '>svg': { color: '$slate300', marginTop: '$7' },
   },
 })
@@ -288,12 +413,15 @@ export const TimelineContent = styled('div', {
   width: '100%',
   maxWidth: '1160px',
   marginInline: 'auto',
+  paddingInline: '$16',
+
   '>div': {
     '>article': {
       marginLeft: '$16',
       paddingBottom: '$12',
       borderRadius: '$sm',
       position: 'relative',
+
       svg: {
         position: 'absolute',
         top: 0,
@@ -301,8 +429,11 @@ export const TimelineContent = styled('div', {
         color: '$slate500',
         backgroundColor: '$slate900',
       },
+
       strong: { fontSize: '$md', color: '$slate200', display: 'block' },
+
       span: { color: '$slate500', fontSize: '$sm', fontWeight: 700 },
+
       p: {
         fontSize: '$md',
         color: '$slate500',
@@ -310,5 +441,9 @@ export const TimelineContent = styled('div', {
         marginBottom: '$7',
       },
     },
+  },
+
+  '@media (min-width: 640px)': {
+    paddingInline: 0,
   },
 })

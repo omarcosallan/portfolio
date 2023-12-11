@@ -1,7 +1,7 @@
 import { styled } from '@/styles'
 
 export const CardContainer = styled('div', {
-  padding: '$12',
+  padding: '$10',
   color: '$slate400',
   borderRadius: '$sm',
   fontSize: '$sm',
@@ -15,6 +15,10 @@ export const CardContainer = styled('div', {
   '&:hover': {
     background: '$slate700',
     transition: 'all .15s cubic-bezier(.4,0,.2,1)',
+  },
+
+  '@media (min-width: 640px)': {
+    padding: '$12',
   },
 
   variants: {
