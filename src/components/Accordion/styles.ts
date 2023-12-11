@@ -60,8 +60,6 @@ const slideUp = keyframes({
 
 export const Content = styled(Accordion.Content, {
   overflow: 'hidden',
-  fontSize: '$md',
-  color: '$slate400',
 
   '&[data-state="open"]': {
     animation: `${slideDown} 300ms cubic-bezier(0.87, 0, 0.13, 1)`,
@@ -73,4 +71,7 @@ export const Content = styled(Accordion.Content, {
 
 export const ContentText = styled('div', {
   padding: '$3 $7',
+  fontSize: '$md',
+  color: '$slate400',
+  marginTop: '$5',
 })

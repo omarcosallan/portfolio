@@ -1,8 +1,14 @@
 import { GetStaticProps } from 'next'
-import Button from '@/components/Button'
+import Link from 'next/link'
+import Image from 'next/image'
+
 import { api } from '@/lib/axios'
 
 import * as Tabs from '@radix-ui/react-tabs'
+import Button from '@/components/Button'
+import IconWrapper from '@/components/IconWrapper'
+import Card from '@/components/Card'
+import { Accordion } from '@/components/Accordion'
 
 import {
   Rocket,
@@ -10,7 +16,6 @@ import {
   GraduationCap,
   ArrowUpRight,
   Certificate,
-  GithubLogo,
   ClockCounterClockwise,
   Users,
   Globe,
@@ -23,10 +28,12 @@ import {
   AtTheTime,
   CodeInsights,
   Content,
+  DescriptionSection,
   Experiences,
   GitHubSummary,
   HomeContainer,
   Intro,
+  Languages,
   Line,
   Presentation,
   Projects,
@@ -37,14 +44,12 @@ import {
   TitleSection,
 } from '@/styles/pages/home'
 
-import Link from 'next/link'
-import IconWrapper from '@/components/IconWrapper'
-import Card from '@/components/Card'
-
-import Image from 'next/image'
-import { Accordion } from '@/components/Accordion'
-
 import blogImg from '../assets/cover.png'
+import htmlLogo from '../assets/html-logo.svg'
+import cssLogo from '../assets/css-logo.svg'
+import jsLogo from '../assets/js-logo.svg'
+import reactLogo from '../assets/react-logo.svg'
+import tsLogo from '../assets/ts-logo.svg'
 
 export interface GithubProfile {
   name: string
@@ -141,20 +146,20 @@ export default function Home({ user, repos }: HomeProps) {
             <Content value="tab1">
               <div>
                 <strong>Primeiros passos</strong>
-                <p>
+                <DescriptionSection>
                   Em 2021, dei início à minha jornada acadêmica ao ingressar na
                   Licenciatura em Computação. Foi nesse período que tive meu
                   primeiro contato significativo com o vasto mundo da
                   programação. Ao longo desse caminho acadêmico, explorei
                   diversas disciplinas, destacando-me especialmente em tópicos
                   como Programação Orientada a Objetos (POO) e Java.
-                </p>
+                </DescriptionSection>
               </div>
             </Content>
             <Content value="tab2">
               <div>
                 <strong>Explorando meu potencial</strong>
-                <p>
+                <DescriptionSection>
                   Meu interesse crescente pelo potencial criativo da programação
                   me levou a participar ativamente do programa Oracle Next
                   Education (ONE) no ano seguinte. Essa experiência, resultado
@@ -162,19 +167,19 @@ export default function Home({ user, repos }: HomeProps) {
                   prática e aplicada dos conhecimentos teóricos adquiridos em
                   sala de aula, ampliando ainda mais minha perspectiva no
                   universo da computação.
-                </p>
+                </DescriptionSection>
               </div>
             </Content>
             <Content value="tab3">
               <div>
                 <strong>Rocketseat</strong>
-                <p>
+                <DescriptionSection>
                   Minha jornada na programação ganhou novos horizontes quando
                   descobri a Rocketseat. Inicialmente focado no Back-end, meu
                   entusiasmo rapidamente se voltou para o universo fascinante do
                   Front-end após consumir uma quantidade significativa de
                   conteúdo fornecido pela plataforma.
-                </p>
+                </DescriptionSection>
               </div>
             </Content>
           </Tabs.Root>
@@ -185,16 +190,15 @@ export default function Home({ user, repos }: HomeProps) {
         <TitleSection>Resumo do GitHub</TitleSection>
 
         <div>
-          <GithubLogo weight="regular" />
           <SummaryCards>
             <Card type="secondary">
               <IconWrapper>
                 <ClockCounterClockwise size={24} weight="regular" />
               </IconWrapper>
               <strong>{user.createdAt}</strong>
-              <p>
+              <DescriptionSection>
                 Há mais de 1 ano na busca contínua de progresso na programação.
-              </p>
+              </DescriptionSection>
             </Card>
 
             <Card type={'secondary'}>
@@ -202,7 +206,9 @@ export default function Home({ user, repos }: HomeProps) {
                 <Users size={24} weight="regular" />
               </IconWrapper>
               <strong>{user.followers} seguidores</strong>
-              <p>Construindo uma comunidade de seguidores engajados.</p>
+              <DescriptionSection>
+                Construindo uma comunidade de seguidores engajados.
+              </DescriptionSection>
             </Card>
 
             <Card type={'secondary'}>
@@ -210,10 +216,10 @@ export default function Home({ user, repos }: HomeProps) {
                 <Globe size={24} weight="regular" />
               </IconWrapper>
               <strong>{user.publicRepos} repositórios</strong>
-              <p>
+              <DescriptionSection>
                 Contribuições em diversos repositórios, explorando várias
                 tecnologias.
-              </p>
+              </DescriptionSection>
             </Card>
           </SummaryCards>
         </div>
@@ -250,6 +256,42 @@ export default function Home({ user, repos }: HomeProps) {
           </Button>
         </Link>
       </Projects>
+
+      <Languages>
+        <div>
+          <TitleSection>Linguagens mais utilizadas</TitleSection>
+          <DescriptionSection>
+            Explore as linguagens de programação que mais utilizo em minha
+            jornada, contribuindo para o desenvolvimento de projetos e
+            aprimoramento contínuo das minhas habilidades técnicas.
+          </DescriptionSection>
+
+          <div>
+            <IconWrapper>
+              <Image src={htmlLogo} width={20} height={20} alt="HTML Logo" />
+            </IconWrapper>
+            <IconWrapper>
+              <Image src={cssLogo} width={20} height={20} alt="HTML Logo" />
+            </IconWrapper>
+            <IconWrapper>
+              <Image src={jsLogo} width={20} height={20} alt="HTML Logo" />
+            </IconWrapper>
+            <IconWrapper>
+              <Image src={reactLogo} width={20} height={20} alt="HTML Logo" />
+            </IconWrapper>
+            <IconWrapper>
+              <Image src={tsLogo} width={20} height={20} alt="HTML Logo" />
+            </IconWrapper>
+          </div>
+        </div>
+
+        <Image
+          src="https://images.unsplash.com/photo-1624377632657-3902bfd35958?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt=""
+          width={640}
+          height={426}
+        />
+      </Languages>
 
       <CodeInsights>
         <Card type="secondary">
